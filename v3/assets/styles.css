@@ -202,7 +202,7 @@ em { font-style: italic; }
 .hero__meta-der { text-align: right; }
 
 .hero__escenario { position: relative; display: grid; min-height: clamp(26rem, 60vh, 48rem); }
-@media (max-width: 47.99em) { .hero__escenario { min-height: 112vw; align-content: end; } .hero__titulo { align-self: end; } }
+@media (max-width: 47.99em) { .hero__escenario { min-height: 124vw; align-content: end; } .hero__titulo { align-self: end; } }
 
 /* Bloque a todo el ancho: NOCHE / DE TIGRE, misma altura de letra en las dos filas */
 .hero__titulo {
@@ -234,7 +234,11 @@ em { font-style: italic; }
   .hero__marco { min-height: auto; }
   .hero__escenario { min-height: 62vw; }
 }
-@media (max-width: 47.99em) { .hero__tigres { right: -8%; left: auto; top: 0; width: 86vw; translate: 0 -4%; } }
+@media (max-width: 47.99em) {
+  .hero__tigres { right: auto; left: 50%; top: 0; width: 88vw; translate: -50% 0; }
+  .hero__meta { display: none; }
+}
+@media (min-width: 48em) { .hero__solo-movil { display: none; } }
 .hero__iris img { width: 100%; filter: drop-shadow(0 30px 50px rgba(0, 0, 0, .5)); }
 
 /* Fogonazo: brasas de luz detrás de los tigres */
