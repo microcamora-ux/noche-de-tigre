@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noche de Tigre · Acme Distribuciones y Yakumanka by Gastón Acurio</title>
+  <meta name="description" content="Noche de Tigre: una celebración de la gastronomía y cultura peruana. Evento privado, solo por invitación, en Yakumanka by Gastón Acurio.">
+  <meta name="theme-color" content="#071D21">
+  <!-- Evento privado: la página no se indexa en buscadores. Quita esta línea solo si quieres que aparezca en ellos -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Noche de Tigre">
+  <meta property="og:description" content="Una celebración de la gastronomía y cultura peruana. Evento privado · Solo por invitación.">
+  <meta property="og:image" content="https://microcamora-ux.github.io/noche-de-tigre/v3/assets/img/noche-de-tigre-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/orn/marca.svg" type="image/svg+xml">
+
+  <!-- TIPOGRAFÍA PROVISIONAL · Fraunces y Hanken Grotesk sustituyen a SLTF Arcilla (titulares) y SLTF Ryecroft (texto)
+       hasta tener las licencias web. Instrucciones al principio de assets/styles.css. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Hanken+Grotesk:ital,wght@0,300..700;1,400&display=swap">
+
+  <link rel="preload" as="image" href="assets/img/tigres.webp" fetchpriority="high">
+  <link rel="stylesheet" href="assets/styles.css?v=2">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script>
+    /* =====================================================================
+       CAMPOS PENDIENTES · Rellena cada valor cuando esté confirmado.
+       Mientras un campo esté vacío, la página muestra el estado "por confirmar"
+       o simplemente no muestra ese elemento. No hace falta tocar nada más.
+       ===================================================================== */
+    window.NOCHE_DE_TIGRE = {
+      fecha: "",            // Ej.: "Jueves 12 de marzo · 20:30 h". Vacío = "Fecha por confirmar"
+      direccion: "",        // Ej.: "Passeig de Gràcia 00, Barcelona". Vacío = no se muestra
+      mapaUrl: "",          // Ej.: "https://maps.app.goo.gl/…". Vacío = no se muestra "Cómo llegar"
+      confirmacionUrl: "",  // Ej.: "https://…". Vacío = "Ver programa" sigue siendo la única llamada principal
+
+      // Instagram: usuario (con o sin @) o URL completa. Vacío = el nombre se muestra como texto sin enlace.
+      instagram: {
+        "yakumanka": "yakumanka_barcelona",           // Botón "Yakumanka en Instagram" en la sección El lugar
+        "mario-cubillas": "mcpercussionbcn",
+        "rocio-quillahuaman": "rocioquillahuaman",
+        "albert-adria": "albert.adria.acosta",
+        "pierre-antoine": "talesofpierre",
+        "miqui-puig": "puigmiqui",
+        "jordi-stone": "jordistone__"
+      }
+    };
+  </script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- Resplandores de fondo -->
+  <div class="aura" aria-hidden="true">
+    <span class="aura__mancha aura__mancha--turquesa"></span>
+    <span class="aura__mancha aura__mancha--fucsia"></span>
+    <span class="aura__mancha aura__mancha--naranja"></span>
+  </div>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera__inner">
+      <a class="cabecera__marca" href="#contenido" aria-label="Noche de Tigre, inicio">
+        <img class="cabecera__icono" src="assets/orn/marca.svg" alt="" width="40" height="40">
+        <span class="cabecera__nombre">Noche de <em>Tigre</em></span>
+      </a>
+      <nav class="nav" aria-label="Secciones">
+        <ul>
+          <li><a href="#la-noche">La noche</a></li>
+          <li><a href="#programa">Programa</a></li>
+          <li><a href="#el-lugar">El lugar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- 1 · PRIMERA PANTALLA -->
+    <section class="hero" aria-labelledby="titulo">
+      <div class="contenedor hero__escena">
+        <p class="hero__presentan">Acme Distribuciones <span class="hero__y">&amp;</span> Yakumanka by Gastón Acurio presentan</p>
+
+        <h1 id="titulo" class="hero__titulo">
+          <span class="hero__l1">Noche de</span>
+          <span class="hero__l2">Tigre</span>
+        </h1>
+
+        <figure class="hero__tigres" data-parallax="0.06">
+          <img src="assets/img/tigres.webp" width="1254" height="1254"
+               alt="Dos tigres escultóricos enfrentados, uno turquesa y otro naranja, decorados con grecas, rombos escalonados y oro"
+               fetchpriority="high" decoding="async">
+        </figure>
+
+        <img class="hero__orbe hero__orbe--aji" src="assets/img/aji.webp" alt="" width="640" height="427" data-parallax="-0.12" decoding="async">
+        <img class="hero__orbe hero__orbe--limon" src="assets/img/limon.webp" alt="" width="640" height="640" data-parallax="0.16" decoding="async">
+        <img class="hero__orbe hero__orbe--destello" src="assets/orn/destello.svg" alt="" width="256" height="256" data-parallax="-0.2">
+        <img class="hero__orbe hero__orbe--rombo" src="assets/orn/rombo-escalonado.svg" alt="" width="256" height="256" data-parallax="0.22">
+
+        <div class="hero__texto">
+          <p class="hero__sub">Una celebración de la gastronomía y cultura peruana</p>
+          <ul class="hero__datos" aria-label="Datos del evento">
+            <li>Evento privado · Solo por invitación</li>
+            <li>Yakumanka by Gastón Acurio</li>
+            <li class="pendiente" data-campo="fecha">Fecha por confirmar</li>
+          </ul>
+          <div class="hero__acciones">
+            <a class="btn btn--principal btn--programa" href="#programa">Ver programa <span aria-hidden="true">↓</span></a>
+            <a class="btn btn--principal" data-campo="confirmacion" href="#" hidden>Confirmar asistencia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cenefa + cinta monumental (decorativas) -->
+    <div class="cenefa" aria-hidden="true"></div>
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta__pista">
+        <span class="cinta__grupo">
+          <span>Noche de <em>Tigre</em></span><img src="assets/orn/estallido.svg" alt="">
+          <span>Gastronomía</span><img src="assets/orn/chakana.svg" alt="">
+          <span><em>Cultura peruana</em></span><img src="assets/orn/destello.svg" alt="">
+        </span>
+        <span class="cinta__grupo">
+          <span>Noche de <em>Tigre</em></span><img src="assets/orn/estallido.svg" alt="">
+          <span>Gastronomía</span><img src="assets/orn/chakana.svg" alt="">
+          <span><em>Cultura peruana</em></span><img src="assets/orn/destello.svg" alt="">
+        </span>
+      </div>
+    </div>
+
+    <!-- 2 · LA NOCHE: la mesa, con el Perú girando alrededor -->
+    <section id="la-noche" class="seccion noche" aria-labelledby="t-la-noche">
+      <div class="contenedor noche__inner">
+        <div class="noche__texto-col">
+          <h2 id="t-la-noche" class="etiqueta" data-revelar="bloque"><img src="assets/orn/rombo.svg" alt="" width="18" height="18"> La noche</h2>
+          <p class="noche__destacado" data-revelar="bloque">Una noche para celebrar el Perú <em>alrededor de la mesa.</em></p>
+          <p class="noche__texto" data-revelar="bloque">Acme Distribuciones y Yakumanka by Gastón Acurio reúnen gastronomía, conversación y música en un encuentro privado dedicado al producto y la cultura peruana.</p>
+        </div>
+
+        <div class="mesa" data-revelar="sello" aria-hidden="true">
+          <img class="mesa__sol" src="assets/orn/sol.svg" alt="">
+          <img class="mesa__plato" src="assets/img/plato.webp" alt="" width="640" height="494" loading="lazy" decoding="async">
+          <div class="mesa__orbita">
+            <img class="mesa__item mesa__item--1" src="assets/img/pez.webp" alt="" width="640" height="427" loading="lazy" decoding="async">
+            <img class="mesa__item mesa__item--2" src="assets/img/aji.webp" alt="" width="640" height="427" loading="lazy" decoding="async">
+            <img class="mesa__item mesa__item--3" src="assets/img/limon.webp" alt="" width="640" height="640" loading="lazy" decoding="async">
+            <img class="mesa__item mesa__item--4" src="assets/img/pisco.webp" alt="" width="640" height="585" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · PROGRAMA -->
+    <section id="programa" class="seccion programa-seccion" aria-labelledby="t-programa">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <h2 id="t-programa" class="seccion__titulo" data-revelar="titulo">Pro<em>grama</em></h2>
+          <p class="seccion__nota" data-revelar="bloque">Seis momentos, de la bienvenida al último baile.</p>
+        </div>
+        <ol class="programa" data-revelar="filas">
+          <li class="programa__fila" style="--i:0">
+            <time class="programa__hora" datetime="20:00">20:00</time>
+            <img class="programa__objeto" src="assets/img/cajon.webp" alt="" width="640" height="585" loading="lazy" decoding="async">
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Bienvenida Afroperuana</h3>
+              <p class="programa__quien"><span class="perfil" data-instagram="mario-cubillas">Mario Cubillas</span></p>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:1">
+            <time class="programa__hora" datetime="20:30">20:30</time>
+            <img class="programa__objeto" src="assets/img/limon.webp" alt="" width="640" height="640" loading="lazy" decoding="async">
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Habla causa</h3>
+              <p class="programa__quien"><span class="perfil" data-instagram="rocio-quillahuaman">Rocío Quillahuaman</span> <span class="programa__con">con</span> <span class="perfil" data-instagram="albert-adria">Albert Adrià</span></p>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:2">
+            <time class="programa__hora" datetime="21:00">21:00</time>
+            <img class="programa__objeto" src="assets/img/pez.webp" alt="" width="640" height="427" loading="lazy" decoding="async">
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Presentación Premio Mejor Ceviche 2027</h3>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:3">
+            <time class="programa__hora" datetime="21:15">21:15</time>
+            <img class="programa__objeto" src="assets/img/pisco.webp" alt="" width="640" height="585" loading="lazy" decoding="async">
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Cóctel</h3>
+              <p class="programa__quien">Productos Acme y estaciones elaboradas por el restaurante</p>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:4">
+            <time class="programa__hora" datetime="22:15">22:15</time>
+            <img class="programa__objeto programa__objeto--gira" src="assets/img/vinilo.webp" alt="" width="640" height="585" loading="lazy" decoding="async">
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">No más chamba</h3>
+              <p class="programa__quien"><span class="perfil" data-instagram="pierre-antoine">Pierre Antoine</span> <span class="programa__con">B2B</span> DJ <span class="perfil" data-instagram="miqui-puig">Miqui Puig</span></p>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:5">
+            <time class="programa__hora" datetime="23:00">23:00</time>
+            <img class="programa__objeto programa__objeto--gira" src="assets/orn/estallido.svg" alt="" width="256" height="256" loading="lazy">
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Se armó el tono</h3>
+              <p class="programa__quien"><span class="perfil" data-instagram="jordi-stone">Jordi Stone</span></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Desfile de objetos (decorativo) -->
+    <div class="desfile" aria-hidden="true">
+      <div class="desfile__pista">
+        <span class="desfile__grupo">
+          <img class="desfile__p" src="assets/img/aji.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/chakana.svg" alt="">
+          <img class="desfile__p" src="assets/img/cajon.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/destello.svg" alt="">
+          <img class="desfile__p" src="assets/img/pez.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/rombo.svg" alt="">
+          <img class="desfile__p" src="assets/img/pisco.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/chakana.svg" alt="">
+          <img class="desfile__p" src="assets/img/vinilo.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/destello.svg" alt="">
+          <img class="desfile__p" src="assets/img/limon.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/rombo.svg" alt="">
+        </span>
+        <span class="desfile__grupo">
+          <img class="desfile__p" src="assets/img/aji.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/chakana.svg" alt="">
+          <img class="desfile__p" src="assets/img/cajon.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/destello.svg" alt="">
+          <img class="desfile__p" src="assets/img/pez.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/rombo.svg" alt="">
+          <img class="desfile__p" src="assets/img/pisco.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/chakana.svg" alt="">
+          <img class="desfile__p" src="assets/img/vinilo.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/destello.svg" alt="">
+          <img class="desfile__p" src="assets/img/limon.webp" alt="" loading="lazy"><img class="desfile__o" src="assets/orn/rombo.svg" alt="">
+        </span>
+      </div>
+    </div>
+
+    <!-- 4 · EL LUGAR Y EL ACCESO -->
+    <section id="el-lugar" class="seccion lugar-seccion" aria-labelledby="t-el-lugar">
+      <img class="lugar__sol" src="assets/orn/sol.svg" alt="" aria-hidden="true">
+      <div class="contenedor lugar-seccion__inner">
+        <h2 id="t-el-lugar" class="seccion__titulo" data-revelar="titulo">El lugar <em>y el acceso</em></h2>
+        <div class="lugar" data-revelar="sello">
+          <p class="lugar__nombre">Yakumanka <span>by Gastón Acurio</span></p>
+          <p class="lugar__acceso">Evento privado. Acceso exclusivamente por invitación.</p>
+          <p class="lugar__fecha pendiente" data-campo="fecha">Fecha por confirmar</p>
+          <p class="lugar__direccion" data-campo="direccion" hidden></p>
+          <div class="lugar__acciones">
+            <a class="btn btn--principal" data-campo="confirmacion" href="#" hidden>Confirmar asistencia</a>
+            <a class="btn btn--secundario" data-campo="mapa" href="#" hidden>Cómo llegar</a>
+            <a class="btn btn--secundario" data-instagram-boton="yakumanka" href="#" hidden>Yakumanka en Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · PATROCINADORES -->
+    <section id="patrocinan" class="seccion patrocinan" aria-labelledby="t-patrocinan">
+      <div class="contenedor">
+        <h2 id="t-patrocinan" class="etiqueta" data-revelar="bloque"><img src="assets/orn/rombo.svg" alt="" width="18" height="18"> Patrocinan</h2>
+        <!-- LOGOTIPOS · cuando lleguen los archivos oficiales, sustituye cada <span> por:
+             <img src="assets/patrocinadores/nombre.svg" alt="Nombre del patrocinador" width="200" height="60"> -->
+        <ul class="patrocinadores" data-revelar="filas">
+          <li class="patrocinador" style="--i:0"><span class="patrocinador__nombre">Acme Distribuciones</span></li>
+          <li class="patrocinador" style="--i:1"><span class="patrocinador__nombre">Estrella Damm</span></li>
+          <li class="patrocinador" style="--i:2"><span class="patrocinador__nombre">Consulado General del Perú en Barcelona</span></li>
+          <li class="patrocinador" style="--i:3"><span class="patrocinador__nombre">Pisco Portón</span></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <div class="cenefa" aria-hidden="true"></div>
+    <div class="contenedor pie__inner">
+      <p class="pie__marca" aria-hidden="true">Noche de <em>Tigre</em></p>
+      <div class="pie__datos">
+        <p>Evento privado · Solo por invitación</p>
+        <p>Acme Distribuciones &amp; Yakumanka by Gastón Acurio</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js?v=1" defer></script>
+  <script src="assets/parallax.js?v=1" defer></script>
+</body>
+</html>
