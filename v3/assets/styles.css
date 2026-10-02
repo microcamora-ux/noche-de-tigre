@@ -297,24 +297,46 @@ em { font-style: italic; }
 /* ---------- Secciones ---------- */
 .seccion { position: relative; padding-block: clamp(5rem, 12vw, 10rem) clamp(5.5rem, 13vw, 11rem); }
 
-/* La noche + la mesa */
+/* La noche: frase monumental con objetos como palabras */
 .noche { overflow: clip; }
-.noche__inner { display: grid; gap: clamp(3rem, 7vw, 5rem); align-items: center; }
-@media (min-width: 60em) { .noche__inner { grid-template-columns: 1fr 1fr; } }
-.noche__texto-col { display: grid; gap: 1.5rem; justify-items: start; }
-.noche__destacado { font-size: clamp(2.5rem, 5.6vw, 5rem); font-weight: 500; line-height: 1; letter-spacing: -.035em; text-wrap: balance; }
-.noche__destacado em { font-weight: 400; padding-right: .06em; }
-.noche__texto { max-width: 44ch; font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: var(--crema-suave); text-wrap: pretty; }
-
-.mesa { position: relative; width: min(100%, 34rem); aspect-ratio: 1; justify-self: center; }
-.mesa__sol { position: absolute; inset: 8%; width: 84%; opacity: .95; animation: girar 90s linear infinite; }
-.mesa__plato { position: absolute; left: 50%; top: 50%; width: 64%; translate: -50% -50%; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .6)); }
-.mesa__orbita { position: absolute; inset: 0; animation: girar 40s linear infinite; }
-.mesa__item { position: absolute; width: 27%; animation: girar 40s linear infinite reverse; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .55)); }
-.mesa__item--1 { left: 36.5%; top: -7%; }
-.mesa__item--2 { right: -8%; top: 38%; }
-.mesa__item--3 { left: 36.5%; bottom: -6%; width: 22%; }
-.mesa__item--4 { left: -6%; top: 34%; width: 22%; }
+.noche .etiqueta { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.noche__destacado {
+  max-width: 21ch;
+  font-size: clamp(2.6rem, 7.4vw, 8rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.noche__destacado em { font-weight: 400; padding-right: .04em; }
+.palabra {
+  display: inline-block;
+  height: 1.05em;
+  width: auto;
+  margin: 0 .08em;
+  vertical-align: -.16em;
+  filter: drop-shadow(0 .12em .18em rgba(0, 0, 0, .55));
+  transition: scale .6s var(--muelle);
+}
+.palabra:hover { scale: 1.18; }
+.palabra--pisco { rotate: 6deg; }
+.palabra--aji { height: .95em; rotate: -10deg; }
+.palabra--plato { height: 1.2em; margin-left: .14em; vertical-align: -.24em; }
+.noche__pie {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  max-width: 34rem;
+  margin: clamp(2.5rem, 6vw, 4.5rem) 0 0 auto;
+}
+.noche__orn { width: 2.25rem; height: 2.25rem; margin-top: .2rem; }
+.noche__texto { font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: var(--crema-suave); text-wrap: pretty; }
+@media (prefers-reduced-motion: no-preference) {
+  .palabra { animation: flotar 6s ease-in-out infinite; }
+  .palabra--aji { animation-delay: -2s; }
+  .palabra--plato { animation-delay: -4s; }
+}
 
 /* Programa */
 .programa-seccion { background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--noche-2) 85%, transparent) 12%, color-mix(in srgb, var(--noche-2) 85%, transparent) 88%, transparent); }
