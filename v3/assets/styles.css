@@ -236,7 +236,9 @@ em { font-style: italic; }
 }
 @media (max-width: 47.99em) {
   .hero__tigres { right: auto; left: 50%; top: 0; width: 88vw; translate: -50% 0; }
-  .hero__meta { display: none; }
+  .hero__meta-der { display: none; }
+  .hero__meta p:first-child { white-space: nowrap; font-size: 2.05vw; letter-spacing: .05em; }
+  .hero__meta br { display: none; }
 }
 @media (min-width: 48em) { .hero__solo-movil { display: none; } }
 .hero__iris img { width: 100%; filter: drop-shadow(0 30px 50px rgba(0, 0, 0, .5)); }
