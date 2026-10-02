@@ -1,6 +1,6 @@
 /* =========================================================================
    NOCHE DE TIGRE · v3 «Gabinete»
-   Etiqueta andina (verde botella, oro, crema) con el fuego de la colección.
+   Noche andina (azul medianoche, oro, crema) con el fuego de la colección.
 
    Tipografía, toda con referencia peruana (Fonts In Use · Perú):
    · Rótulos: alfabeto propio (assets/rotulo.js), método de Chachánika — Mundo Chachapoyas.
@@ -15,9 +15,9 @@
   --f-titular: "Bluu Next", "Iowan Old Style", Georgia, serif;
   --f-texto: "Geologica", "Helvetica Neue", Arial, sans-serif;
 
-  --botella: #0A2220;
-  --botella-2: #0F2D2A;
-  --botella-3: #163A36;
+  --botella: #0B1330;
+  --botella-2: #111C40;
+  --botella-3: #182652;
   --crema: #F1E6D2;
   --oro: #D9AE5F;
   --oro-claro: #EFD39A;
