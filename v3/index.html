@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@300..700&display=swap">
 
   <link rel="preload" as="image" href="assets/img/tigres.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/styles.css?v=26">
+  <link rel="stylesheet" href="assets/styles.css?v=31">
   <script>document.documentElement.classList.add('js');</script>
 
   <script>
@@ -118,7 +118,6 @@
               <a class="btn btn--principal" data-campo="confirmacion" href="#" hidden><span>Confirmar asistencia</span></a>
             </div>
           </div>
-          <div class="cenefa cenefa--marco" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -130,31 +129,43 @@
           <span class="seccion__n" aria-hidden="true">I</span>
           <h2 id="t-la-noche" class="seccion__rotulo" data-rotulo data-revelar="rotulo">La noche</h2>
         </div>
-        <!-- Frase repartida por la rejilla -->
-        <p class="frase" data-dividir data-revelar="palabras"><span class="frase__1">Una noche</span> <span class="frase__2">para celebrar</span> <span class="frase__3">el Perú</span> <span class="frase__4"><em>alrededor de la mesa.</em></span></p>
-        <p class="frase__nota" data-revelar="bloque">Acme Distribuciones y Yakumanka by Gastón Acurio reúnen gastronomía, conversación y música en un encuentro privado dedicado al producto y la cultura peruana.</p>
+        <div class="noche-rejilla">
+          <!-- IMAGEN PROVISIONAL · sustituir por la imagen definitiva de «La noche».
+               Basta con cambiar el src (formato vertical 4:5 recomendado; si es una foto a sangre, quita la clase "noche__imagen--pieza"). -->
+          <figure class="noche__imagen noche__imagen--pieza" data-revelar="cortina">
+            <div class="noche__marco">
+              <span class="noche__brasa" aria-hidden="true"></span>
+              <img data-deriva="lento" src="assets/img/plato.webp" alt="Plato de cerámica esmaltada en turquesa con cenefas escalonadas" width="640" height="494" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="noche__pie-foto"><span>Nº 00</span> La mesa</figcaption>
+          </figure>
 
-        <ol class="ejes">
-          <li class="eje" data-revelar="bloque">
-            <span class="eje__n">01</span>
-            <h3 class="eje__nombre">Gastronomía</h3>
-            <p class="eje__texto">El producto peruano en manos de la cocina de Yakumanka: ají, limón, pescado del día y pisco.</p>
-          </li>
-          <li class="eje eje--derecha" data-revelar="bloque">
-            <span class="eje__n">02</span>
-            <h3 class="eje__nombre"><em>Conversación</em></h3>
-            <p class="eje__texto">Voces que cuentan el Perú desde la mesa, entre plato y plato, sin prisa.</p>
-          </li>
-          <li class="eje eje--centro" data-revelar="bloque">
-            <span class="eje__n">03</span>
-            <h3 class="eje__nombre">Música</h3>
-            <p class="eje__texto">Del cajón afroperuano a la cabina: la noche empieza escuchando y termina bailando.</p>
-          </li>
-        </ol>
+          <div class="noche__texto">
+            <p class="noche__meta">Gastronomía · Conversación · Música</p>
+            <p class="noche__frase" data-dividir data-revelar="palabras">Una noche para celebrar el Perú <em>alrededor de la mesa.</em></p>
+            <p class="noche__parrafo" data-revelar="bloque">Acme Distribuciones y Yakumanka by Gastón Acurio reúnen gastronomía, conversación y música en un encuentro privado dedicado al producto y la cultura peruana.</p>
+
+            <dl class="ficha" data-revelar="bloque">
+              <div class="ficha__fila">
+                <dt><span>01</span> Gastronomía</dt>
+                <dd>La cocina de Yakumanka trabaja el producto peruano con técnica y memoria: ají amarillo, limón, pescado del día y pisco. Estaciones abiertas para probar, repetir y preguntar.</dd>
+                <img class="ficha__pieza" src="assets/img/aji.webp" alt="" width="640" height="427" loading="lazy" decoding="async">
+              </div>
+              <div class="ficha__fila">
+                <dt><span>02</span> Conversación</dt>
+                <dd>Cocineros, creadores y amigos de la casa hablan del Perú que se come y se cuenta. Sin escenario ni atril: alrededor de la mesa, entre plato y plato.</dd>
+                <img class="ficha__pieza" src="assets/img/pisco.webp" alt="" width="640" height="585" loading="lazy" decoding="async">
+              </div>
+              <div class="ficha__fila">
+                <dt><span>03</span> Música</dt>
+                <dd>Del cajón afroperuano de la bienvenida a la cabina de la madrugada. La noche empieza escuchando, sigue conversando y termina bailando.</dd>
+                <img class="ficha__pieza" src="assets/img/vinilo.webp" alt="" width="640" height="585" loading="lazy" decoding="async">
+              </div>
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
-
-    <div class="cenefa" aria-hidden="true"></div>
 
     <!-- 3 · PROGRAMA · escenario fijo: la pieza de cada momento se ilumina al llegar a él -->
     <section id="programa" class="seccion programa-seccion" aria-labelledby="t-programa">
@@ -269,7 +280,6 @@
   </main>
 
   <footer class="pie">
-    <div class="cenefa" aria-hidden="true"></div>
     <!-- Repetición, a la manera de los carteles chicha, con la rotulación propia -->
     <div class="pie__repeticion" aria-hidden="true" data-desliza>
       <span data-rotulo data-peso="negro">Noche de Tigre</span><span data-rotulo data-peso="negro">Noche de Tigre</span><span data-rotulo data-peso="negro">Noche de Tigre</span><span data-rotulo data-peso="negro">Noche de Tigre</span>

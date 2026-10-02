@@ -172,7 +172,7 @@ em { font-style: italic; }
 .hero__marco {
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto auto;
+  grid-template-rows: auto 1fr auto;
   gap: clamp(1rem, 2vw, 1.5rem);
   min-height: calc(100dvh - 4rem - clamp(1.5rem, 4vw, 3rem));
   padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 4vw, 3.75rem);
@@ -267,79 +267,55 @@ em { font-style: italic; }
   .js.listo .hero__meta, .js.listo .hero__pie, .js.listo .hero__vertical { opacity: 1; }
 }
 
-/* ---------- Cenefa de la colección ---------- */
-.cenefa {
-  height: clamp(2rem, 3.2vw, 2.75rem);
-  background: url("orn/friso.svg") repeat-x left center / auto 100%;
-  border-block: 1px solid var(--oro);
-}
-.cenefa--marco {
-  position: relative;
-  z-index: var(--z-3);
-  margin: 0 calc(clamp(1.25rem, 4vw, 3.75rem) * -1) calc(clamp(1.25rem, 3vw, 2.5rem) * -1);
-  border-bottom: 0;
-}
-.programa-seccion { border-top: 0 !important; }
-.pie { border-top: 0 !important; }
-
 /* ---------- Secciones ---------- */
 .seccion { position: relative; padding-block: clamp(5rem, 11vw, 9rem) clamp(5.5rem, 12vw, 10rem); }
 
-/* La noche: frase repartida por la rejilla + ejes como filas tipográficas */
-.frase {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: clamp(1rem, 2vw, 2rem);
-  row-gap: .1em;
-  font-family: var(--f-titular);
-  font-weight: 700;
-  font-size: clamp(2.4rem, 6.4vw, 6.4rem);
-  line-height: 1;
-  letter-spacing: -.02em;
-}
-.frase > span { grid-column: 1 / -1; }
-.frase em { color: var(--oro); }
-.frase__1 { grid-column: 1 / -1 !important; }
-.frase__2 { grid-column: 3 / -1 !important; }
-.frase__3 { grid-column: 1 / -1 !important; font-style: italic; color: var(--oro); }
-.frase__4 { grid-column: 2 / -1 !important; }
+/* La noche: imagen enmarcada + texto con ficha (misma gramática que portada y El lugar) */
+.noche-rejilla { display: grid; gap: clamp(2.5rem, 5vw, 4rem); }
 @media (min-width: 60em) {
-  .frase__1 { grid-column: 1 / 8 !important; }
-  .frase__2 { grid-column: 5 / 13 !important; justify-self: end; }
-  .frase__3 { grid-column: 1 / 5 !important; align-self: end; font-size: .55em; padding-bottom: .25em; }
-  .frase__4 { grid-column: 4 / 13 !important; }
+  .noche-rejilla { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(3rem, 5vw, 5rem); align-items: stretch; }
+  .noche__imagen { grid-template-rows: 1fr auto; }
+  .noche__marco { aspect-ratio: auto; height: 100%; min-height: 34rem; }
 }
-.frase__nota {
-  max-width: 30ch;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-  font-size: .8125rem;
-  font-weight: 400;
-  letter-spacing: .04em;
-  line-height: 1.7;
-  color: var(--tinta-suave);
-}
-@media (min-width: 60em) { .frase__nota { margin-left: auto; margin-right: 8%; } }
 
-.ejes { margin-top: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--oro); }
-.eje {
+.noche__imagen { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem; min-width: 0; }
+.noche__marco {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: clamp(1rem, 2vw, 2rem);
-  align-items: end;
-  padding-block: clamp(1.5rem, 3.5vw, 3rem);
-  border-bottom: 1px solid var(--filete);
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--botella-2);
+  border: 1px solid var(--filete);
 }
-.eje__n { grid-column: 1 / 2; align-self: start; padding-top: .6rem; font-size: .75rem; font-weight: 500; letter-spacing: .2em; color: var(--oro); }
-.eje__nombre { grid-column: 2 / -1; font-family: var(--f-titular); font-weight: 700; font-size: clamp(3rem, 10.5vw, 10rem); line-height: .9; letter-spacing: -.03em; }
-.eje__nombre em { color: var(--oro); }
-.eje__texto { grid-column: 2 / -1; max-width: 32ch; margin-top: 1rem; font-size: clamp(.95rem, 1.2vw, 1.1rem); color: var(--tinta-suave); text-wrap: pretty; }
-@media (min-width: 60em) {
-  .eje__nombre { grid-column: 2 / 10; }
-  .eje__texto { grid-column: 10 / 13; margin: 0 0 .6em; }
-  .eje--derecha .eje__nombre { grid-column: 4 / 13; grid-row: 1; justify-self: end; text-align: right; }
-  .eje--derecha .eje__texto { grid-column: 2 / 5; grid-row: 1; }
-  .eje--centro .eje__nombre { grid-column: 2 / 10; justify-self: center; }
+.noche__marco::before { content: ""; position: absolute; inset: 6px; z-index: 2; border: 1px solid color-mix(in srgb, var(--oro) 14%, transparent); pointer-events: none; }
+.noche__marco img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+.noche__imagen--pieza .noche__marco img { width: 74%; height: auto; object-fit: contain; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .55)) saturate(1.1); }
+.noche__brasa { position: absolute; inset: 22%; border-radius: 50%; background: #FF6A1A; filter: blur(70px); opacity: .45; }
+.noche__imagen:not(.noche__imagen--pieza) .noche__brasa { display: none; }
+.noche__pie-foto { font-size: .6875rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--tinta-suave); }
+.noche__pie-foto span { margin-right: .6em; color: var(--oro); }
+@media (prefers-reduced-motion: no-preference) {
+  .js .noche__imagen[data-revelar="cortina"] .noche__marco { clip-path: inset(100% 0 0 0); transition: clip-path 1.6s var(--expo); }
+  .js .noche__imagen[data-revelar="cortina"].visto .noche__marco { clip-path: inset(0); }
 }
+
+.noche__texto { display: grid; gap: clamp(1.5rem, 2.5vw, 2rem); align-content: start; }
+
+.noche__meta { font-size: .6875rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--oro); }
+.noche__frase { font-family: var(--f-titular); font-weight: 700; font-size: clamp(2.3rem, 4.4vw, 4.4rem); line-height: 1; letter-spacing: -.02em; text-wrap: balance; }
+.noche__frase em { color: var(--oro); }
+.noche__parrafo { max-width: 40ch; font-size: clamp(1.05rem, 1.35vw, 1.2rem); font-weight: 300; color: var(--tinta-suave); text-wrap: pretty; }
+
+.ficha { margin-top: clamp(.5rem, 2vw, 1.5rem); border-top: 1px solid var(--oro); }
+.ficha__fila { display: grid; gap: .35rem 1.5rem; padding-block: 1.4rem; border-bottom: 1px solid var(--filete); }
+@media (min-width: 40em) { .ficha__fila { grid-template-columns: 12.5rem 1fr 5.5rem; align-items: center; column-gap: 1.75rem; } }
+.ficha__pieza { display: none; width: 5.5rem; height: 5.5rem; object-fit: contain; filter: drop-shadow(0 12px 16px rgba(0, 0, 0, .5)); }
+@media (min-width: 40em) { .ficha__pieza { display: block; } }
+.ficha dt { font-family: var(--f-titular); font-weight: 700; font-size: clamp(1.25rem, 1.7vw, 1.5rem); line-height: 1.1; }
+.ficha dt span { margin-right: .5em; font-family: var(--f-texto); font-size: .6875rem; font-weight: 500; letter-spacing: .2em; color: var(--oro); vertical-align: .25em; }
+.ficha dd { font-size: 1rem; line-height: 1.6; font-weight: 300; color: var(--tinta-suave); text-wrap: pretty; }
 
 /* ---------- Programa: vitrina fija + momentos ---------- */
 .programa-seccion { border-top: 1px solid var(--filete); }
