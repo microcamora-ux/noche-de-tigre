@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noche de Tigre · Acme Distribuciones y Yakumanka by Gastón Acurio</title>
+  <meta name="description" content="Noche de Tigre: una celebración de la gastronomía y cultura peruana. Evento privado, solo por invitación, en Yakumanka by Gastón Acurio.">
+  <meta name="theme-color" content="#F2E4D8">
+  <!-- Evento privado: la página no se indexa en buscadores. Quita esta línea solo si quieres que aparezca en ellos -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Noche de Tigre">
+  <meta property="og:description" content="Una celebración de la gastronomía y cultura peruana. Evento privado · Solo por invitación.">
+  <meta property="og:image" content="https://microcamora-ux.github.io/noche-de-tigre/v2/assets/img/noche-de-tigre-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- TIPOGRAFÍA PROVISIONAL · Fraunces y Hanken Grotesk sustituyen a SLTF Arcilla (titulares) y SLTF Ryecroft (texto)
+       hasta tener las licencias web. Al recibir los .woff2, sigue las instrucciones al principio de assets/styles.css
+       y borra estas tres líneas. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Hanken+Grotesk:ital,wght@0,300..700;1,400&display=swap">
+
+  <link rel="stylesheet" href="assets/styles.css?v=11">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script>
+    /* =====================================================================
+       CAMPOS PENDIENTES · Rellena cada valor cuando esté confirmado.
+       Mientras un campo esté vacío, la página muestra el estado "por confirmar"
+       o simplemente no muestra ese elemento. No hace falta tocar nada más.
+       ===================================================================== */
+    window.NOCHE_DE_TIGRE = {
+      fecha: "",            // Ej.: "Jueves 12 de marzo · 20:30 h". Vacío = "Fecha por confirmar"
+      direccion: "",        // Ej.: "Passeig de Gràcia 00, Barcelona". Vacío = no se muestra
+      mapaUrl: "",          // Ej.: "https://maps.app.goo.gl/…". Vacío = no se muestra "Cómo llegar"
+      confirmacionUrl: "",  // Ej.: "https://…". Vacío = "Ver programa" sigue siendo la única llamada principal
+
+      // Instagram: usuario (con o sin @) o URL completa. Vacío = el nombre se muestra como texto sin enlace.
+      instagram: {
+        "yakumanka": "yakumanka_barcelona",           // Botón "Yakumanka en Instagram" en la sección El lugar
+        "mario-cubillas": "mcpercussionbcn",
+        "rocio-quillahuaman": "rocioquillahuaman",
+        "albert-adria": "albert.adria.acosta",
+        "pierre-antoine": "talesofpierre",
+        "miqui-puig": "puigmiqui",
+        "jordi-stone": "jordistone__"
+      }
+    };
+  </script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- =====================================================================
+       ILUSTRACIONES · sistema propio en SVG inspirado en la tradición peruana
+       (felino oculado de Paracas, colmillos de Chavín, peces de Chancay, chakana,
+       olas de Chan Chan). Los colores salen de las variables de assets/styles.css.
+       ===================================================================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- Destello de cuatro puntas -->
+      <symbol id="i-destello" viewBox="0 0 100 100">
+        <path d="M50 4 C54 38 62 46 96 50 C62 54 54 62 50 96 C46 62 38 54 4 50 C38 46 46 38 50 4 Z" fill="currentColor"/>
+      </symbol>
+
+      <!-- Estallido de rayos (eco de los soles de los mates burilados) -->
+      <symbol id="i-estallido" viewBox="0 0 100 100">
+        <g stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+          <path d="M50 4V96M4 50H96M17.5 17.5L82.5 82.5M82.5 17.5L17.5 82.5M32.4 7.5L67.6 92.5M7.5 32.4L92.5 67.6M67.6 7.5L32.4 92.5M92.5 32.4L7.5 67.6M41 5L59 95M5 41L95 59M59 5L41 95M95 41L5 59M24 10L76 90M10 24L90 76M76 10L24 90M90 24L10 76"/>
+        </g>
+        <circle cx="50" cy="50" r="9" fill="currentColor"/>
+      </symbol>
+
+      <!-- Chakana (cruz escalonada andina) -->
+      <symbol id="i-chakana" viewBox="0 0 100 100">
+        <path d="M38 6H62V20H80V38H94V62H80V80H62V94H38V80H20V62H6V38H20V20H38Z" fill="currentColor"/>
+        <circle cx="50" cy="50" r="11" fill="var(--crema)"/>
+      </symbol>
+
+      <!-- Marca: máscara de felino geométrica -->
+      <symbol id="i-marca" viewBox="0 0 100 100">
+        <path fill="currentColor" d="M14 10L34 30H66L86 10L90 52C90 78 72 94 50 94C28 94 10 78 10 52Z"/>
+        <circle cx="35" cy="52" r="10" fill="var(--crema)"/>
+        <circle cx="65" cy="52" r="10" fill="var(--crema)"/>
+        <circle cx="37" cy="50" r="4.5" fill="currentColor"/>
+        <circle cx="67" cy="50" r="4.5" fill="currentColor"/>
+        <path fill="var(--crema)" d="M36 72L42 86L46 74H54L58 86L64 72Z"/>
+        <path fill="var(--crema)" d="M46 34H54L50 44Z"/>
+      </symbol>
+
+      <!-- Ají con cara -->
+      <symbol id="i-aji" viewBox="0 0 120 230">
+        <g stroke="var(--tinta)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M44 170L30 214M30 214L16 216M74 168L92 208M92 208L106 204" fill="none"/>
+          <path d="M14 104L-2 92M106 96L118 76" fill="none"/>
+          <path d="M60 38C30 40 16 70 18 110C20 150 40 180 58 196C66 186 70 170 82 150C100 120 104 90 98 66C92 46 78 38 60 38Z" fill="var(--rojo)"/>
+          <path d="M60 40C58 26 64 14 78 8M50 42C56 34 70 34 76 42" fill="none" stroke-width="6"/>
+          <path d="M48 42C54 32 72 32 78 44C70 46 56 46 48 42Z" fill="var(--verde)"/>
+          <path d="M34 70C38 60 44 56 50 56" fill="none" stroke="var(--crema)" stroke-width="5"/>
+          <path d="M42 120C50 132 66 132 74 120" fill="var(--crema)"/>
+        </g>
+        <circle cx="46" cy="96" r="5.5" fill="var(--tinta)"/>
+        <circle cx="72" cy="94" r="5.5" fill="var(--tinta)"/>
+      </symbol>
+
+      <!-- Limón partido con cara -->
+      <symbol id="i-limon" viewBox="0 0 160 170">
+        <g stroke="var(--tinta)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M58 132L50 162M50 162L36 162M102 132L112 160M112 160L126 158" fill="none"/>
+          <path d="M14 70L-2 52M146 70L160 50" fill="none"/>
+          <circle cx="80" cy="76" r="66" fill="var(--verde)"/>
+          <circle cx="80" cy="76" r="52" fill="var(--lima)"/>
+          <path d="M80 28V124M38 52L122 100M38 100L122 52" fill="none" stroke="var(--verde)" stroke-width="4"/>
+          <circle cx="80" cy="76" r="8" fill="var(--crema)" stroke-width="4"/>
+          <ellipse cx="80" cy="102" rx="22" ry="12" fill="var(--rojo)"/>
+          <path d="M66 98H94" stroke="var(--crema)" stroke-width="4"/>
+        </g>
+        <circle cx="58" cy="66" r="6.5" fill="var(--tinta)"/>
+        <circle cx="102" cy="66" r="6.5" fill="var(--tinta)"/>
+      </symbol>
+
+      <!-- Pez de Chancay -->
+      <symbol id="i-pez" viewBox="0 0 220 120">
+        <g stroke="var(--tinta)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M160 60L212 18L200 60L212 102Z" fill="var(--rosa)"/>
+          <path d="M8 60C30 18 90 6 132 20C150 26 160 42 166 60C160 78 150 94 132 100C90 114 30 102 8 60Z" fill="var(--azul)"/>
+          <path d="M70 18C80 4 104 2 116 14M74 104C86 116 104 114 112 104" fill="var(--rosa)"/>
+          <path d="M58 26C66 46 66 74 58 94" fill="none"/>
+          <path d="M84 24L100 40L84 56L100 72L84 88L100 98M110 24L126 40L110 56L126 72L110 88" fill="none" stroke="var(--crema)" stroke-width="5"/>
+          <path d="M14 66C20 72 28 74 36 70" fill="none"/>
+          <circle cx="34" cy="48" r="11" fill="var(--crema)"/>
+        </g>
+        <circle cx="37" cy="47" r="5" fill="var(--tinta)"/>
+      </symbol>
+
+      <!-- Cajón peruano -->
+      <symbol id="i-cajon" viewBox="0 0 100 100">
+        <g stroke="var(--tinta)" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M28 14H76L80 88H24Z" fill="var(--naranja)"/>
+          <path d="M28 14L22 8H70L76 14" fill="var(--amarillo)"/>
+          <circle cx="52" cy="62" r="11" fill="var(--tinta)"/>
+          <path d="M34 26H70" fill="none" stroke="var(--crema)"/>
+          <path d="M88 30C94 36 94 44 88 50M8 30C2 36 2 44 8 50M94 22C102 32 102 48 94 58" fill="none"/>
+        </g>
+      </symbol>
+
+      <!-- Causa limeña -->
+      <symbol id="i-causa" viewBox="0 0 100 100">
+        <g stroke="var(--tinta)" stroke-width="4.5" stroke-linejoin="round">
+          <ellipse cx="50" cy="82" rx="44" ry="12" fill="var(--crema)"/>
+          <path d="M22 50H78V78C78 84 22 84 22 78Z" fill="var(--amarillo)"/>
+          <path d="M22 50V62C22 68 78 68 78 62V50" fill="var(--verde)"/>
+          <ellipse cx="50" cy="40" rx="28" ry="8" fill="var(--amarillo)"/>
+          <path d="M22 40V50C22 56 78 56 78 50V40" fill="var(--amarillo)"/>
+          <circle cx="40" cy="34" r="5" fill="var(--tinta)"/>
+          <path d="M54 34C58 22 70 20 74 26C68 28 62 32 54 34Z" fill="var(--lima)"/>
+        </g>
+      </symbol>
+
+      <!-- Pisco sour -->
+      <symbol id="i-copa" viewBox="0 0 100 100">
+        <g stroke="var(--tinta)" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M14 22H86C84 50 70 62 50 62C30 62 16 50 14 22Z" fill="var(--amarillo)"/>
+          <path d="M14 22H86C86 30 14 30 14 22Z" fill="var(--crema)"/>
+          <path d="M50 62V86M32 90H68" fill="none"/>
+          <path d="M80 10L66 26" fill="none"/>
+        </g>
+        <circle cx="38" cy="25" r="2.6" fill="var(--rojo)"/>
+        <circle cx="54" cy="24" r="2.6" fill="var(--rojo)"/>
+        <circle cx="64" cy="26" r="2" fill="var(--rojo)"/>
+      </symbol>
+
+      <!-- Vinilo con sol -->
+      <symbol id="i-vinilo" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="44" fill="var(--tinta)"/>
+        <g fill="none" stroke="var(--crema)" stroke-opacity=".28" stroke-width="1.6">
+          <circle cx="50" cy="50" r="38"/><circle cx="50" cy="50" r="32"/><circle cx="50" cy="50" r="26"/>
+        </g>
+        <path d="M22 30A34 34 0 0 1 40 18" fill="none" stroke="var(--crema)" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="17" fill="var(--naranja)"/>
+        <g stroke="var(--amarillo)" stroke-width="3" stroke-linecap="round">
+          <path d="M50 37V42M50 58V63M37 50H42M58 50H63M41 41L44 44M56 56L59 59M59 41L56 44M44 56L41 59"/>
+        </g>
+        <circle cx="50" cy="50" r="3.5" fill="var(--crema)"/>
+      </symbol>
+
+      <!-- Sol de fiesta -->
+      <symbol id="i-sol" viewBox="0 0 100 100">
+        <g stroke="var(--tinta)" stroke-width="4" stroke-linejoin="round">
+          <path fill="var(--naranja)" d="M50 2L58 20L76 8L74 28L96 28L82 44L98 56L78 62L86 82L66 76L60 96L50 80L40 96L34 76L14 82L22 62L2 56L18 44L4 28L26 28L24 8L42 20Z"/>
+          <circle cx="50" cy="50" r="24" fill="var(--amarillo)"/>
+          <path d="M38 56C42 66 58 66 62 56Z" fill="var(--tinta)" stroke-linecap="round"/>
+        </g>
+        <circle cx="41" cy="45" r="3.6" fill="var(--tinta)"/>
+        <circle cx="59" cy="45" r="3.6" fill="var(--tinta)"/>
+      </symbol>
+
+      <!-- Friso textil: chakana, ola escalonada de Chan Chan y rombo -->
+      <pattern id="p-friso" width="144" height="72" patternUnits="userSpaceOnUse">
+        <rect width="144" height="72" fill="var(--rosa)"/>
+        <path d="M0 72V54H12V42H24V30H36V42H48V54H60V72Z" fill="var(--azul)" stroke="var(--tinta)" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M27 21H33V27H39V33H33V39H27V33H21V27H27Z" transform="translate(0 -12)" fill="var(--amarillo)" stroke="var(--tinta)" stroke-width="3"/>
+        <path d="M84 12H96V20H104V30H112V42H104V52H96V60H84V52H76V42H68V30H76V20H84Z" fill="var(--naranja)" stroke="var(--tinta)" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="86" y="32" width="8" height="8" fill="var(--crema)" stroke="var(--tinta)" stroke-width="3"/>
+        <path d="M126 22L136 36L126 50L116 36Z" fill="var(--lima)" stroke="var(--tinta)" stroke-width="3" stroke-linejoin="round"/>
+      </pattern>
+    </defs>
+  </svg>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera__inner">
+      <a class="cabecera__marca" href="#contenido" aria-label="Noche de Tigre, inicio">
+        <svg class="cabecera__icono" aria-hidden="true" focusable="false"><use href="#i-marca"/></svg>
+        <span class="cabecera__nombre">Noche de Tigre</span>
+      </a>
+      <nav class="nav" aria-label="Secciones">
+        <ul>
+          <li><a href="#la-noche">La noche</a></li>
+          <li><a href="#programa">Programa</a></li>
+          <li><a href="#el-lugar">El lugar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- 1 · PRIMERA PANTALLA -->
+    <section class="hero" aria-labelledby="titulo">
+      <div class="contenedor hero__inner">
+        <div class="hero__texto">
+          <p class="hero__presentan">Acme Distribuciones <span class="hero__y">&amp;</span> Yakumanka by Gastón Acurio presentan</p>
+
+          <h1 id="titulo" class="hero__titulo">
+            <span class="hero__l1">Noche de</span>
+            <span class="hero__l2">Tigre</span>
+          </h1>
+
+          <p class="hero__sub">Una celebración de la gastronomía y cultura peruana</p>
+
+          <ul class="hero__datos" aria-label="Datos del evento">
+            <li>Evento privado · Solo por invitación</li>
+            <li>Yakumanka by Gastón Acurio</li>
+            <li class="pendiente" data-campo="fecha">Fecha por confirmar</li>
+          </ul>
+
+          <div class="hero__acciones">
+            <a class="btn btn--principal btn--programa" href="#programa">Ver programa <span aria-hidden="true">↓</span></a>
+            <a class="btn btn--principal" data-campo="confirmacion" href="#" hidden>Confirmar asistencia</a>
+          </div>
+        </div>
+
+        <!-- Felino oculado (Paracas) con colmillos de Chavín, rodeado de su corte de ajíes, limones y peces -->
+        <div class="hero__visual" role="img" aria-label="Ilustración: máscara de tigre inspirada en el felino de Paracas, rodeada de ajíes, limones y peces que bailan">
+          <svg class="felino" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+            <g class="felino__halo">
+              <use href="#i-estallido" x="10" y="10" width="580" height="580" style="color:var(--naranja)"/>
+            </g>
+            <!-- Serpientes que salen de la cabeza, como en los mantos Paracas -->
+            <g class="felino__serpientes" stroke-linecap="round" fill="none" style="color:var(--amarillo)">
+              <g id="serpiente">
+                <path d="M300 160C276 128 324 112 300 82C284 62 300 44 300 44" stroke="var(--tinta)" stroke-width="34"/>
+                <path d="M300 160C276 128 324 112 300 82C284 62 300 44 300 44" stroke="currentColor" stroke-width="22"/>
+                <circle cx="300" cy="40" r="20" fill="currentColor" stroke="var(--tinta)" stroke-width="6"/>
+                <circle cx="306" cy="36" r="5" fill="var(--tinta)" stroke="none"/>
+              </g>
+              <use href="#serpiente" transform="rotate(-42 300 300)" style="color:var(--rosa)"/>
+              <use href="#serpiente" transform="rotate(42 300 300)" style="color:var(--azul)"/>
+              <use href="#serpiente" transform="rotate(-84 300 300)" style="color:var(--lima)"/>
+              <use href="#serpiente" transform="rotate(84 300 300)" style="color:var(--lima)"/>
+            </g>
+            <g stroke="var(--tinta)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+              <!-- Orejas -->
+              <path d="M176 214L160 112L262 160Z" fill="var(--naranja)"/>
+              <path d="M424 214L440 112L338 160Z" fill="var(--naranja)"/>
+              <path d="M184 190L176 136L230 162Z" fill="var(--rosa)" stroke-width="5"/>
+              <path d="M416 190L424 136L370 162Z" fill="var(--rosa)" stroke-width="5"/>
+              <!-- Cabeza -->
+              <path d="M300 150C392 150 440 182 446 262L452 360C452 438 390 482 300 482C210 482 148 438 148 360L154 262C160 182 208 150 300 150Z" fill="var(--naranja)"/>
+              <!-- Rayas escalonadas -->
+              <path d="M150 300H186V318H168V336H150" fill="var(--tinta)"/>
+              <path d="M450 300H414V318H432V336H450" fill="var(--tinta)"/>
+              <path d="M152 380H178V398H156" fill="var(--tinta)"/>
+              <path d="M448 380H422V398H444" fill="var(--tinta)"/>
+              <!-- Chakana en la frente -->
+              <path d="M288 166H312V180H326V194H338V218H326V232H312V246H288V232H274V218H262V194H274V180H288Z" fill="var(--amarillo)"/>
+              <circle cx="300" cy="206" r="9" fill="var(--rojo)" stroke-width="5"/>
+              <path d="M226 186L246 226M374 186L354 226" fill="none"/>
+              <!-- Hocico -->
+              <path d="M300 300C350 300 386 330 386 372C386 414 350 436 300 436C250 436 214 414 214 372C214 330 250 300 300 300Z" fill="var(--crema)"/>
+              <!-- Ojos oculados -->
+              <circle cx="232" cy="282" r="46" fill="var(--crema)"/>
+              <circle cx="368" cy="282" r="46" fill="var(--crema)"/>
+              <circle cx="232" cy="282" r="28" fill="var(--amarillo)" stroke-width="6"/>
+              <circle cx="368" cy="282" r="28" fill="var(--amarillo)" stroke-width="6"/>
+              <!-- Nariz -->
+              <path d="M272 318H328L300 352Z" fill="var(--rosa)"/>
+              <!-- Boca con colmillos -->
+              <path d="M236 378C262 396 338 396 364 378C356 418 330 432 300 432C270 432 244 418 236 378Z" fill="var(--tinta)"/>
+              <path d="M250 384L262 422L274 390Z" fill="var(--crema)" stroke-width="5"/>
+              <path d="M350 384L338 422L326 390Z" fill="var(--crema)" stroke-width="5"/>
+              <path d="M282 392H318V404H282Z" fill="var(--crema)" stroke-width="4"/>
+              <!-- Bigotes -->
+              <path d="M210 360L120 344M212 378L114 384M218 396L130 424M390 360L480 344M388 378L486 384M382 396L470 424" fill="none" stroke-width="6"/>
+            </g>
+            <circle class="felino__pupila" cx="240" cy="276" r="13" fill="var(--tinta)"/>
+            <circle class="felino__pupila" cx="376" cy="276" r="13" fill="var(--tinta)"/>
+            <circle cx="245" cy="271" r="4" fill="var(--crema)"/>
+            <circle cx="381" cy="271" r="4" fill="var(--crema)"/>
+          </svg>
+
+          <svg class="corte corte--aji" aria-hidden="true" focusable="false"><use href="#i-aji"/></svg>
+          <svg class="corte corte--limon" aria-hidden="true" focusable="false"><use href="#i-limon"/></svg>
+          <svg class="corte corte--pez" aria-hidden="true" focusable="false"><use href="#i-pez"/></svg>
+          <svg class="corte corte--vinilo" aria-hidden="true" focusable="false"><use href="#i-vinilo"/></svg>
+          <svg class="chispa chispa--1" aria-hidden="true" focusable="false"><use href="#i-destello"/></svg>
+          <svg class="chispa chispa--2" aria-hidden="true" focusable="false"><use href="#i-destello"/></svg>
+          <svg class="chispa chispa--3" aria-hidden="true" focusable="false"><use href="#i-destello"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cinta monumental (decorativa: repite textos de la primera pantalla) -->
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta__pista">
+        <span class="cinta__grupo">
+          <span>Noche de <em>Tigre</em></span><svg class="cinta__sep cinta__sep--sol"><use href="#i-destello"/></svg>
+          <span>Gastronomía</span><svg class="cinta__sep cinta__sep--estallido"><use href="#i-estallido"/></svg>
+          <span><em>Cultura peruana</em></span><svg class="cinta__sep cinta__sep--chakana"><use href="#i-chakana"/></svg>
+        </span>
+        <span class="cinta__grupo">
+          <span>Noche de <em>Tigre</em></span><svg class="cinta__sep cinta__sep--sol"><use href="#i-destello"/></svg>
+          <span>Gastronomía</span><svg class="cinta__sep cinta__sep--estallido"><use href="#i-estallido"/></svg>
+          <span><em>Cultura peruana</em></span><svg class="cinta__sep cinta__sep--chakana"><use href="#i-chakana"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- 2 · LA NOCHE -->
+    <section id="la-noche" class="seccion noche" aria-labelledby="t-la-noche">
+      <svg class="noche__aji" data-revelar="flotante" aria-hidden="true" focusable="false"><use href="#i-aji"/></svg>
+      <svg class="noche__limon" data-revelar="flotante" aria-hidden="true" focusable="false"><use href="#i-limon"/></svg>
+      <div class="contenedor noche__inner">
+        <svg class="ornamento" data-revelar="bloque" aria-hidden="true" focusable="false"><use href="#i-marca"/></svg>
+        <h2 id="t-la-noche" class="etiqueta" data-revelar="bloque">La noche</h2>
+        <p class="noche__destacado" data-revelar="bloque">
+          Una noche para celebrar el Perú
+          <svg class="en-linea en-linea--destello" aria-hidden="true" focusable="false"><use href="#i-destello"/></svg>
+          <em>alrededor de la mesa.</em>
+        </p>
+        <p class="noche__texto" data-revelar="bloque">Acme Distribuciones y Yakumanka by Gastón Acurio reúnen gastronomía, conversación y música en un encuentro privado dedicado al producto y la cultura peruana.</p>
+      </div>
+    </section>
+
+    <svg class="friso" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#p-friso)"/></svg>
+
+    <!-- 3 · PROGRAMA -->
+    <section id="programa" class="seccion programa-seccion" aria-labelledby="t-programa">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <h2 id="t-programa" class="seccion__titulo" data-revelar="titulo">Pro<em>grama</em></h2>
+          <p class="seccion__nota" data-revelar="bloque">Seis momentos, de la bienvenida al último baile.</p>
+        </div>
+        <ol class="programa" data-revelar="filas">
+          <li class="programa__fila" style="--i:0">
+            <time class="programa__hora" datetime="20:00">20:00</time>
+            <svg class="programa__icono" aria-hidden="true" focusable="false"><use href="#i-cajon"/></svg>
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Bienvenida Afroperuana</h3>
+              <p class="programa__quien"><span class="perfil" data-instagram="mario-cubillas">Mario Cubillas</span></p>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:1">
+            <time class="programa__hora" datetime="20:30">20:30</time>
+            <svg class="programa__icono" aria-hidden="true" focusable="false"><use href="#i-causa"/></svg>
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Habla causa</h3>
+              <p class="programa__quien"><span class="perfil" data-instagram="rocio-quillahuaman">Rocío Quillahuaman</span> <span class="programa__con">con</span> <span class="perfil" data-instagram="albert-adria">Albert Adrià</span></p>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:2">
+            <time class="programa__hora" datetime="21:00">21:00</time>
+            <svg class="programa__icono" aria-hidden="true" focusable="false"><use href="#i-pez"/></svg>
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Presentación Premio Mejor Ceviche 2027</h3>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:3">
+            <time class="programa__hora" datetime="21:15">21:15</time>
+            <svg class="programa__icono" aria-hidden="true" focusable="false"><use href="#i-copa"/></svg>
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Cóctel</h3>
+              <p class="programa__quien">Productos Acme y estaciones elaboradas por el restaurante</p>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:4">
+            <time class="programa__hora" datetime="22:15">22:15</time>
+            <svg class="programa__icono" aria-hidden="true" focusable="false"><use href="#i-vinilo"/></svg>
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">No más chamba</h3>
+              <p class="programa__quien"><span class="perfil" data-instagram="pierre-antoine">Pierre Antoine</span> <span class="programa__con">B2B</span> DJ <span class="perfil" data-instagram="miqui-puig">Miqui Puig</span></p>
+            </div>
+          </li>
+          <li class="programa__fila" style="--i:5">
+            <time class="programa__hora" datetime="23:00">23:00</time>
+            <svg class="programa__icono" aria-hidden="true" focusable="false"><use href="#i-sol"/></svg>
+            <div class="programa__cuerpo">
+              <h3 class="programa__nombre">Se armó el tono</h3>
+              <p class="programa__quien"><span class="perfil" data-instagram="jordi-stone">Jordi Stone</span></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Desfile: la comparsa de la noche cruza la pantalla (decorativo) -->
+    <div class="desfile" aria-hidden="true">
+      <div class="desfile__pista">
+        <span class="desfile__grupo">
+          <svg class="desfile__p desfile__p--aji" style="--d:0"><use href="#i-aji"/></svg>
+          <svg class="desfile__chispa"><use href="#i-destello"/></svg>
+          <svg class="desfile__p desfile__p--cajon" style="--d:1"><use href="#i-cajon"/></svg>
+          <svg class="desfile__chispa desfile__chispa--b"><use href="#i-chakana"/></svg>
+          <svg class="desfile__p desfile__p--limon" style="--d:2"><use href="#i-limon"/></svg>
+          <svg class="desfile__chispa"><use href="#i-destello"/></svg>
+          <svg class="desfile__p desfile__p--copa" style="--d:3"><use href="#i-copa"/></svg>
+          <svg class="desfile__chispa desfile__chispa--b"><use href="#i-chakana"/></svg>
+          <svg class="desfile__p desfile__p--pez" style="--d:4"><use href="#i-pez"/></svg>
+          <svg class="desfile__chispa"><use href="#i-destello"/></svg>
+          <svg class="desfile__p desfile__p--sol" style="--d:5"><use href="#i-sol"/></svg>
+          <svg class="desfile__chispa desfile__chispa--b"><use href="#i-chakana"/></svg>
+          <svg class="desfile__p desfile__p--causa" style="--d:6"><use href="#i-causa"/></svg>
+          <svg class="desfile__chispa"><use href="#i-destello"/></svg>
+          <svg class="desfile__p desfile__p--vinilo" style="--d:7"><use href="#i-vinilo"/></svg>
+          <svg class="desfile__chispa desfile__chispa--b"><use href="#i-chakana"/></svg>
+        </span>
+        <span class="desfile__grupo">
+          <svg class="desfile__p desfile__p--aji" style="--d:0"><use href="#i-aji"/></svg>
+          <svg class="desfile__chispa"><use href="#i-destello"/></svg>
+          <svg class="desfile__p desfile__p--cajon" style="--d:1"><use href="#i-cajon"/></svg>
+          <svg class="desfile__chispa desfile__chispa--b"><use href="#i-chakana"/></svg>
+          <svg class="desfile__p desfile__p--limon" style="--d:2"><use href="#i-limon"/></svg>
+          <svg class="desfile__chispa"><use href="#i-destello"/></svg>
+          <svg class="desfile__p desfile__p--copa" style="--d:3"><use href="#i-copa"/></svg>
+          <svg class="desfile__chispa desfile__chispa--b"><use href="#i-chakana"/></svg>
+          <svg class="desfile__p desfile__p--pez" style="--d:4"><use href="#i-pez"/></svg>
+          <svg class="desfile__chispa"><use href="#i-destello"/></svg>
+          <svg class="desfile__p desfile__p--sol" style="--d:5"><use href="#i-sol"/></svg>
+          <svg class="desfile__chispa desfile__chispa--b"><use href="#i-chakana"/></svg>
+          <svg class="desfile__p desfile__p--causa" style="--d:6"><use href="#i-causa"/></svg>
+          <svg class="desfile__chispa"><use href="#i-destello"/></svg>
+          <svg class="desfile__p desfile__p--vinilo" style="--d:7"><use href="#i-vinilo"/></svg>
+          <svg class="desfile__chispa desfile__chispa--b"><use href="#i-chakana"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- 4 · EL LUGAR Y EL ACCESO -->
+    <section id="el-lugar" class="seccion lugar-seccion" aria-labelledby="t-el-lugar">
+      <svg class="lugar__sol" aria-hidden="true" focusable="false"><use href="#i-sol"/></svg>
+      <svg class="lugar__pez" data-revelar="flotante" aria-hidden="true" focusable="false"><use href="#i-pez"/></svg>
+      <div class="contenedor lugar-seccion__inner">
+        <h2 id="t-el-lugar" class="seccion__titulo" data-revelar="titulo">El lugar <em>y el acceso</em></h2>
+        <div class="lugar" data-revelar="sello">
+          <p class="lugar__nombre">Yakumanka <span>by Gastón Acurio</span></p>
+          <p class="lugar__acceso">Evento privado. Acceso exclusivamente por invitación.</p>
+          <p class="lugar__fecha pendiente" data-campo="fecha">Fecha por confirmar</p>
+          <p class="lugar__direccion" data-campo="direccion" hidden></p>
+          <div class="lugar__acciones">
+            <a class="btn btn--principal" data-campo="confirmacion" href="#" hidden>Confirmar asistencia</a>
+            <a class="btn btn--secundario" data-campo="mapa" href="#" hidden>Cómo llegar</a>
+            <a class="btn btn--secundario" data-instagram-boton="yakumanka" href="#" hidden>Yakumanka en Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · PATROCINADORES -->
+    <section id="patrocinan" class="seccion patrocinan" aria-labelledby="t-patrocinan">
+      <div class="contenedor">
+        <h2 id="t-patrocinan" class="etiqueta" data-revelar="bloque">Patrocinan</h2>
+        <!-- LOGOTIPOS · cuando lleguen los archivos oficiales, sustituye cada <span> por:
+             <img src="assets/patrocinadores/nombre.svg" alt="Nombre del patrocinador" width="200" height="60"> -->
+        <ul class="patrocinadores" data-revelar="filas">
+          <li class="patrocinador" style="--i:0"><span class="patrocinador__nombre">Acme Distribuciones</span></li>
+          <li class="patrocinador" style="--i:1"><span class="patrocinador__nombre">Estrella Damm</span></li>
+          <li class="patrocinador" style="--i:2"><span class="patrocinador__nombre">Consulado General del Perú en Barcelona</span></li>
+          <li class="patrocinador" style="--i:3"><span class="patrocinador__nombre">Pisco Portón</span></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <svg class="friso friso--pie" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#p-friso)"/></svg>
+    <div class="contenedor pie__inner">
+      <p class="pie__marca" aria-hidden="true">Noche de <em>Tigre</em></p>
+      <div class="pie__datos">
+        <p>Evento privado · Solo por invitación</p>
+        <p>Acme Distribuciones &amp; Yakumanka by Gastón Acurio</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js?v=11" defer></script>
+</body>
+</html>
