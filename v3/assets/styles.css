@@ -110,6 +110,7 @@ em { font-style: italic; }
 
 /* ---------- Enlaces y botones ---------- */
 .enlace {
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: .7rem;
@@ -195,7 +196,7 @@ em { font-style: italic; }
 .hero__vertical span { padding-inline: .5em; }
 .hero__vertical--izq { left: 1.1rem; transform: translate(-50%, -50%) rotate(-90deg); }
 .hero__vertical--der { right: 1.1rem; transform: translate(50%, -50%) rotate(90deg); }
-@media (max-width: 47.99em) { .hero__vertical { display: none; } }
+@media (max-width: 87.49em) { .hero__vertical { display: none; } }
 
 .hero__meta { position: relative; z-index: var(--z-3); display: flex; justify-content: space-between; gap: 1rem; font-size: .6875rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; line-height: 1.8; color: var(--tinta-suave); }
 .hero__meta-der { text-align: right; }
@@ -228,7 +229,12 @@ em { font-style: italic; }
   width: min(33vw, 32rem);
   translate: 0 -14%;
 }
-@media (max-width: 47.99em) { .hero__tigres { right: -6%; left: auto; top: 0; width: 78vw; translate: 0 0; } }
+@media (min-width: 48em) and (max-width: 74.99em) and (orientation: portrait) {
+  .hero__tigres { width: 50vw; translate: 0 -6%; }
+  .hero__marco { min-height: auto; }
+  .hero__escenario { min-height: 62vw; }
+}
+@media (max-width: 47.99em) { .hero__tigres { right: -8%; left: auto; top: 0; width: 86vw; translate: 0 -4%; } }
 .hero__iris img { width: 100%; filter: drop-shadow(0 30px 50px rgba(0, 0, 0, .5)); }
 
 /* Fogonazo: brasas de luz detrás de los tigres */
@@ -292,6 +298,7 @@ em { font-style: italic; }
   background: var(--botella-2);
   border: 1px solid var(--filete);
 }
+@media (max-width: 59.99em) { .noche__marco { aspect-ratio: 4 / 3; } .noche__imagen--pieza .noche__marco img { width: 56%; } }
 .noche__marco::before { content: ""; position: absolute; inset: 6px; z-index: 2; border: 1px solid color-mix(in srgb, var(--oro) 14%, transparent); pointer-events: none; }
 .noche__marco img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
 .noche__imagen--pieza .noche__marco img { width: 74%; height: auto; object-fit: contain; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .55)) saturate(1.1); }
@@ -316,6 +323,11 @@ em { font-style: italic; }
 @media (min-width: 40em) { .ficha__fila { grid-template-columns: 12.5rem 1fr 5.5rem; align-items: center; column-gap: 1.75rem; } }
 .ficha__pieza { display: none; width: 5.5rem; height: 5.5rem; object-fit: contain; filter: drop-shadow(0 12px 16px rgba(0, 0, 0, .5)); }
 @media (min-width: 40em) { .ficha__pieza { display: block; } }
+@media (max-width: 39.99em), (min-width: 60em) and (max-width: 74.99em) {
+  .ficha__fila { grid-template-columns: 1fr auto; align-items: center; }
+  .ficha__fila dd { grid-column: 1 / -1; }
+  .ficha__pieza { display: block; grid-column: 2; grid-row: 1; width: 3.75rem; height: 3.75rem; }
+}
 .ficha dt { font-family: var(--f-titular); font-weight: 700; font-size: clamp(1.25rem, 1.7vw, 1.5rem); line-height: 1.1; }
 .ficha dt span { margin-right: .5em; font-family: var(--f-texto); font-size: .6875rem; font-weight: 500; letter-spacing: .2em; color: var(--oro); vertical-align: .25em; }
 .ficha dd { font-size: 1rem; line-height: 1.6; font-weight: 300; color: var(--tinta-suave); text-wrap: pretty; }
@@ -406,6 +418,11 @@ em { font-style: italic; }
 }
 .momento__pieza { width: min(68%, 18rem); justify-self: center; margin-bottom: .75rem; filter: drop-shadow(0 20px 26px rgba(0, 0, 0, .55)) drop-shadow(0 0 30px color-mix(in srgb, var(--color) 50%, transparent)); }
 @media (min-width: 60em) { .momento__pieza { display: none; } }
+@media (min-width: 40em) and (max-width: 59.99em) {
+  .momento { grid-template-columns: 13rem 1fr; column-gap: 2.5rem; align-items: center; }
+  .momento > :not(.momento__pieza) { grid-column: 2; }
+  .momento__pieza { grid-column: 1; grid-row: 1 / span 5; width: 100%; margin: 0; }
+}
 .momento__hora { display: inline-flex; align-items: center; gap: .75rem; font-size: .8125rem; font-weight: 500; letter-spacing: .2em; color: var(--color); }
 .momento__hora::before { content: ""; width: .55rem; height: .55rem; background: var(--color); transform: rotate(45deg); }
 .momento__nombre { font-size: clamp(2.1rem, 4vw, 3.75rem); line-height: 1; letter-spacing: -.015em; text-wrap: balance; }
@@ -443,7 +460,7 @@ a.perfil:hover { color: var(--oro); background-size: 0 1px; background-position:
 .pie__repeticion { display: flex; gap: .45em; padding-block: clamp(2rem, 4vw, 3.5rem); font-size: clamp(3.5rem, 10vw, 9rem); white-space: nowrap; will-change: transform; }
 .pie__repeticion > span { flex: none; color: var(--oro); }
 .pie__repeticion > span:nth-child(even) .rotulo__svg { fill: none; stroke: color-mix(in srgb, var(--crema) 45%, transparent); stroke-width: 1.2; }
-.pie__repeticion { border-bottom: 1px solid var(--filete); }
+.pie__cinta { overflow: hidden; border-bottom: 1px solid var(--filete); }
 .pie__inner { display: grid; gap: 1.5rem; padding-block: clamp(2.5rem, 5vw, 4rem) 2.5rem; }
 @media (min-width: 48em) { .pie__inner { grid-template-columns: 1fr auto; align-items: end; } }
 .pie__marca { font-size: clamp(1.6rem, 2.6vw, 2.25rem); }
