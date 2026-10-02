@@ -160,7 +160,8 @@ em { font-style: italic; }
 }
 .cabecera__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
 .cabecera__marca { display: inline-flex; align-items: center; gap: .7rem; text-decoration: none; }
-.cabecera__icono { width: 1.9rem; height: 1.9rem; }
+.cabecera__icono { width: 2.5rem; height: 2.5rem; border-radius: 50%; object-fit: cover; background: var(--botella-2); box-shadow: 0 0 0 1px var(--oro), 0 0 0 3px var(--botella), 0 0 0 4px color-mix(in srgb, var(--oro) 35%, transparent); transition: transform .6s var(--expo); }
+.cabecera__marca:hover .cabecera__icono { transform: rotate(-8deg) scale(1.06); }
 .cabecera__nombre { font-size: .75rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; }
 .nav ul { display: flex; gap: clamp(1rem, 3vw, 2.75rem); }
 .nav a { display: inline-flex; align-items: baseline; gap: .45rem; font-size: .75rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; color: var(--tinta-suave); transition: color .4s; }
