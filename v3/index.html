@@ -20,14 +20,18 @@
 
   <link rel="icon" href="assets/orn/marca.svg" type="image/svg+xml">
 
-  <!-- TIPOGRAFÍA PROVISIONAL · Fraunces y Hanken Grotesk sustituyen a SLTF Arcilla (titulares) y SLTF Ryecroft (texto)
-       hasta tener las licencias web. Instrucciones al principio de assets/styles.css. -->
+  <!-- TIPOGRAFÍA
+       · Rótulos (NOCHE DE TIGRE, títulos de sección): alfabeto propio dibujado en assets/rotulo.js,
+         con el método de Chachánika (Studio A, Mundo Chachapoyas).
+       · Titulares: Bluu Next (Velvetyne, OFL), la tipografía de Matacuy Elixir Andino. Alojada en assets/fonts.
+       · Texto: Geologica (Monokrom), la que acompaña a Chachánika en Mundo Chachapoyas. -->
+  <link rel="preload" href="assets/fonts/BluuNext-Bold.otf" as="font" type="font/otf" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Hanken+Grotesk:ital,wght@0,300..700;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@300..700&display=swap">
 
   <link rel="preload" as="image" href="assets/img/tigres.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/styles.css?v=10">
+  <link rel="stylesheet" href="assets/styles.css?v=21">
   <script>document.documentElement.classList.add('js');</script>
 
   <script>
@@ -76,7 +80,7 @@
 
   <main id="contenido">
 
-    <!-- 1 · PRIMERA PANTALLA · cartel enmarcado como una etiqueta: título partido y tigres entre las dos líneas -->
+    <!-- 1 · PRIMERA PANTALLA -->
     <section class="hero" aria-labelledby="titulo">
       <div class="contenedor">
         <div class="hero__marco">
@@ -89,14 +93,14 @@
           </div>
 
           <div class="hero__escenario">
-            <h1 id="titulo" class="hero__titulo">
-              <span class="hero__l1"><span class="mascara"><span>Noche</span></span> <span class="mascara"><span>de</span></span></span>
-              <span class="hero__l2"><span class="mascara"><span>Tigre</span></span></span>
+            <div class="hero__fuego" aria-hidden="true"><span></span><span></span><span></span></div>
+            <h1 id="titulo" class="hero__titulo" data-rotulo>
+              <span class="hero__l1" data-linea>Noche de</span>
+              <span class="hero__l2" data-linea>Tigre</span>
             </h1>
-
             <figure class="hero__tigres">
               <div class="hero__iris">
-                <img data-deriva src="assets/img/tigres.webp" width="1254" height="1254"
+                <img data-deriva="lento" src="assets/img/tigres.webp" width="1254" height="1254"
                      alt="Dos tigres escultóricos enfrentados, uno turquesa y otro naranja, decorados con grecas, rombos escalonados y oro"
                      fetchpriority="high" decoding="async">
               </div>
@@ -104,7 +108,7 @@
           </div>
 
           <div class="hero__pie">
-            <p class="hero__sub">Una celebración de la gastronomía y cultura peruana</p>
+            <p class="hero__sub">Una celebración de la gastronomía <em>y la cultura peruana</em></p>
             <ul class="hero__datos" aria-label="Datos del evento">
               <li>Yakumanka by Gastón Acurio</li>
               <li class="pendiente" data-campo="fecha">Fecha por confirmar</li>
@@ -120,110 +124,126 @@
 
     <!-- 2 · LA NOCHE -->
     <section id="la-noche" class="seccion noche" aria-labelledby="t-la-noche">
-      <div class="contenedor rejilla">
-        <h2 id="t-la-noche" class="etiqueta noche__etiqueta"><span class="etiqueta__n">I</span>La noche</h2>
-        <p class="noche__destacado" data-dividir data-revelar="palabras">Una noche para celebrar el Perú <em>alrededor de la mesa.</em></p>
-        <figure class="pieza noche__pieza" data-revelar="cortina">
-          <div class="pieza__marco"><img data-deriva="lento" src="assets/img/plato.webp" alt="Plato de cerámica esmaltada en turquesa con cenefas escalonadas" width="640" height="494" loading="lazy" decoding="async"></div>
-          <figcaption class="pieza__ficha"><span>Nº 00</span>La mesa</figcaption>
-        </figure>
-        <p class="noche__texto" data-revelar="bloque">Acme Distribuciones y Yakumanka by Gastón Acurio reúnen gastronomía, conversación y música en un encuentro privado dedicado al producto y la cultura peruana.</p>
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="seccion__n" aria-hidden="true">I</span>
+          <h2 id="t-la-noche" class="seccion__rotulo" data-rotulo data-revelar="rotulo">La noche</h2>
+        </div>
+        <div class="noche__cuerpo">
+          <p class="noche__destacado" data-dividir data-revelar="palabras">Una noche para celebrar el Perú <em>alrededor de la mesa.</em></p>
+          <p class="noche__texto" data-revelar="bloque">Acme Distribuciones y Yakumanka by Gastón Acurio reúnen gastronomía, conversación y música en un encuentro privado dedicado al producto y la cultura peruana.</p>
+        </div>
+        <ul class="pilares" data-revelar="filas">
+          <li class="pilar" style="--i:0">
+            <img class="pilar__orn" src="assets/orn/chakana.svg" alt="" width="256" height="256">
+            <h3 class="pilar__nombre">Gastronomía</h3>
+            <p>El producto peruano en manos de la cocina de Yakumanka: ají, limón, pescado del día y pisco.</p>
+          </li>
+          <li class="pilar" style="--i:1">
+            <img class="pilar__orn" src="assets/orn/rombo-escalonado.svg" alt="" width="256" height="256">
+            <h3 class="pilar__nombre">Conversación</h3>
+            <p>Voces que cuentan el Perú desde la mesa, entre plato y plato, sin prisa.</p>
+          </li>
+          <li class="pilar" style="--i:2">
+            <img class="pilar__orn" src="assets/orn/destello.svg" alt="" width="256" height="256">
+            <h3 class="pilar__nombre">Música</h3>
+            <p>Del cajón afroperuano a la cabina: la noche empieza escuchando y termina bailando.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- 3 · PROGRAMA · al pasar el ratón, la pieza de cada momento sigue al cursor -->
+    <!-- 3 · PROGRAMA · escenario fijo: la pieza de cada momento se ilumina al llegar a él -->
     <section id="programa" class="seccion programa-seccion" aria-labelledby="t-programa">
       <div class="contenedor">
         <div class="seccion__cabeza">
-          <h2 id="t-programa" class="etiqueta"><span class="etiqueta__n">II</span>Programa</h2>
-          <p class="seccion__nota" data-dividir data-revelar="palabras">De la bienvenida <em>al último baile.</em></p>
+          <span class="seccion__n" aria-hidden="true">II</span>
+          <h2 id="t-programa" class="seccion__rotulo" data-rotulo data-revelar="rotulo">Programa</h2>
         </div>
-        <ol class="programa" data-revelar="filas">
-          <li class="programa__fila" style="--i:0" data-objeto="assets/img/cajon.webp">
-            <time class="programa__hora" datetime="20:00">20:00</time>
-            <div class="programa__cuerpo">
-              <h3 class="programa__nombre">Bienvenida Afroperuana</h3>
-              <p class="programa__quien"><span class="perfil" data-instagram="mario-cubillas">Mario Cubillas</span></p>
-            </div>
-            <img class="programa__miniatura" src="assets/img/cajon.webp" alt="" loading="lazy" decoding="async">
-          </li>
-          <li class="programa__fila" style="--i:1" data-objeto="assets/img/limon.webp">
-            <time class="programa__hora" datetime="20:30">20:30</time>
-            <div class="programa__cuerpo">
-              <h3 class="programa__nombre">Habla causa</h3>
-              <p class="programa__quien"><span class="perfil" data-instagram="rocio-quillahuaman">Rocío Quillahuaman</span> <span class="programa__con">con</span> <span class="perfil" data-instagram="albert-adria">Albert Adrià</span></p>
-            </div>
-            <img class="programa__miniatura" src="assets/img/limon.webp" alt="" loading="lazy" decoding="async">
-          </li>
-          <li class="programa__fila" style="--i:2" data-objeto="assets/img/pez.webp">
-            <time class="programa__hora" datetime="21:00">21:00</time>
-            <div class="programa__cuerpo">
-              <h3 class="programa__nombre">Presentación Premio Mejor Ceviche 2027</h3>
-            </div>
-            <img class="programa__miniatura" src="assets/img/pez.webp" alt="" loading="lazy" decoding="async">
-          </li>
-          <li class="programa__fila" style="--i:3" data-objeto="assets/img/pisco.webp">
-            <time class="programa__hora" datetime="21:15">21:15</time>
-            <div class="programa__cuerpo">
-              <h3 class="programa__nombre">Cóctel</h3>
-              <p class="programa__quien">Productos Acme y estaciones elaboradas por el restaurante</p>
-            </div>
-            <img class="programa__miniatura" src="assets/img/pisco.webp" alt="" loading="lazy" decoding="async">
-          </li>
-          <li class="programa__fila" style="--i:4" data-objeto="assets/img/vinilo.webp">
-            <time class="programa__hora" datetime="22:15">22:15</time>
-            <div class="programa__cuerpo">
-              <h3 class="programa__nombre">No más chamba</h3>
-              <p class="programa__quien"><span class="perfil" data-instagram="pierre-antoine">Pierre Antoine</span> <span class="programa__con">B2B</span> DJ <span class="perfil" data-instagram="miqui-puig">Miqui Puig</span></p>
-            </div>
-            <img class="programa__miniatura" src="assets/img/vinilo.webp" alt="" loading="lazy" decoding="async">
-          </li>
-          <li class="programa__fila" style="--i:5" data-objeto="assets/img/aji.webp">
-            <time class="programa__hora" datetime="23:00">23:00</time>
-            <div class="programa__cuerpo">
-              <h3 class="programa__nombre">Se armó el tono</h3>
-              <p class="programa__quien"><span class="perfil" data-instagram="jordi-stone">Jordi Stone</span></p>
-            </div>
-            <img class="programa__miniatura" src="assets/img/aji.webp" alt="" loading="lazy" decoding="async">
-          </li>
-        </ol>
-      </div>
-      <div class="visor" aria-hidden="true"><div class="visor__marco"><img alt=""></div></div>
-    </section>
 
-    <!-- COLECCIÓN · pared de museo: las piezas de la noche, catalogadas -->
-    <section class="seccion coleccion-seccion" aria-labelledby="t-coleccion">
-      <p class="coleccion__gigante" aria-hidden="true">Sobre la mesa</p>
-      <div class="contenedor">
-        <div class="seccion__cabeza">
-          <h2 id="t-coleccion" class="etiqueta"><span class="etiqueta__n">—</span>Sobre la mesa</h2>
-          <p class="seccion__nota" data-dividir data-revelar="palabras">Seis piezas <em>para una noche.</em></p>
+        <div class="programa">
+          <div class="escenario" aria-hidden="true">
+            <div class="escenario__vitrina">
+              <span class="escenario__halo"></span>
+              <span class="escenario__aro"></span>
+              <div class="escenario__pieza activa" data-i="0"><img src="assets/img/cajon.webp" alt=""><span class="brillo"></span></div>
+              <div class="escenario__pieza" data-i="1"><img src="assets/img/limon.webp" alt="" loading="lazy"><span class="brillo"></span></div>
+              <div class="escenario__pieza" data-i="2"><img src="assets/img/pez.webp" alt="" loading="lazy"><span class="brillo"></span></div>
+              <div class="escenario__pieza" data-i="3"><img src="assets/img/pisco.webp" alt="" loading="lazy"><span class="brillo"></span></div>
+              <div class="escenario__pieza" data-i="4"><img src="assets/img/vinilo.webp" alt="" loading="lazy"><span class="brillo"></span></div>
+              <div class="escenario__pieza" data-i="5"><img src="assets/img/aji.webp" alt="" loading="lazy"><span class="brillo"></span></div>
+            </div>
+            <p class="escenario__hora"><span>20:00</span></p>
+          </div>
+
+          <ol class="momentos">
+            <li class="momento activo" data-i="0" style="--color:#FF7A1F">
+              <img class="momento__pieza" src="assets/img/cajon.webp" alt="" loading="lazy" decoding="async">
+              <time class="momento__hora" datetime="20:00">20:00</time>
+              <h3 class="momento__nombre">Bienvenida Afroperuana</h3>
+              <p class="momento__texto">La noche arranca al ritmo del cajón. Percusión afroperuana para cruzar la puerta, dejar la ciudad atrás y entrar en el Perú.</p>
+              <p class="momento__quien"><span class="perfil" data-instagram="mario-cubillas">Mario Cubillas</span></p>
+            </li>
+            <li class="momento" data-i="1" style="--color:#C6D84A">
+              <img class="momento__pieza" src="assets/img/limon.webp" alt="" loading="lazy" decoding="async">
+              <time class="momento__hora" datetime="20:30">20:30</time>
+              <h3 class="momento__nombre">Habla causa</h3>
+              <p class="momento__texto">«Habla, causa»: así se saludan los amigos en Lima. Una conversación sin guion sobre lo que el Perú ha puesto en la mesa del mundo.</p>
+              <p class="momento__quien"><span class="perfil" data-instagram="rocio-quillahuaman">Rocío Quillahuaman</span> <span class="momento__con">con</span> <span class="perfil" data-instagram="albert-adria">Albert Adrià</span></p>
+            </li>
+            <li class="momento" data-i="2" style="--color:#12C3C9">
+              <img class="momento__pieza" src="assets/img/pez.webp" alt="" loading="lazy" decoding="async">
+              <time class="momento__hora" datetime="21:00">21:00</time>
+              <h3 class="momento__nombre">Premio Mejor Ceviche 2027</h3>
+              <p class="momento__texto">Pescado del día, limón y ají. Presentamos el premio que saldrá a buscar el mejor ceviche de 2027.</p>
+            </li>
+            <li class="momento" data-i="3" style="--color:#E8B04A">
+              <img class="momento__pieza" src="assets/img/pisco.webp" alt="" loading="lazy" decoding="async">
+              <time class="momento__hora" datetime="21:15">21:15</time>
+              <h3 class="momento__nombre">Cóctel</h3>
+              <p class="momento__texto">La cocina sale de la cocina. Estaciones de Yakumanka repartidas por la sala, productos Acme y pisco para brindar.</p>
+              <p class="momento__quien">Productos Acme y estaciones elaboradas por el restaurante</p>
+            </li>
+            <li class="momento" data-i="4" style="--color:#FF2A93">
+              <img class="momento__pieza" src="assets/img/vinilo.webp" alt="" loading="lazy" decoding="async">
+              <time class="momento__hora" datetime="22:15">22:15</time>
+              <h3 class="momento__nombre">No más chamba</h3>
+              <p class="momento__texto">Se acabó el trabajo por hoy. Dos selectores se turnan los platos, B2B, hasta que nadie se acuerde de mirar el reloj.</p>
+              <p class="momento__quien"><span class="perfil" data-instagram="pierre-antoine">Pierre Antoine</span> <span class="momento__con">B2B</span> DJ <span class="perfil" data-instagram="miqui-puig">Miqui Puig</span></p>
+            </li>
+            <li class="momento" data-i="5" style="--color:#E2432A">
+              <img class="momento__pieza" src="assets/img/aji.webp" alt="" loading="lazy" decoding="async">
+              <time class="momento__hora" datetime="23:00">23:00</time>
+              <h3 class="momento__nombre">Se armó el tono</h3>
+              <p class="momento__texto">En el Perú, cuando «se arma el tono», empieza la fiesta de verdad. El último tramo de la noche, en la pista.</p>
+              <p class="momento__quien"><span class="perfil" data-instagram="jordi-stone">Jordi Stone</span></p>
+            </li>
+          </ol>
         </div>
-        <ol class="coleccion">
-          <li><figure class="pieza" data-revelar="cortina"><div class="pieza__marco"><img data-deriva src="assets/img/aji.webp" alt="Ají escultórico decorado con grecas" width="640" height="427" loading="lazy" decoding="async"></div><figcaption class="pieza__ficha"><span>Nº 01</span>Ají amarillo <i>Capsicum baccatum</i></figcaption></figure></li>
-          <li><figure class="pieza" data-revelar="cortina"><div class="pieza__marco"><img data-deriva src="assets/img/limon.webp" alt="Medio limón escultórico con corteza decorada" width="640" height="640" loading="lazy" decoding="async"></div><figcaption class="pieza__ficha"><span>Nº 02</span>Limón <i>Citrus × aurantiifolia</i></figcaption></figure></li>
-          <li><figure class="pieza" data-revelar="cortina"><div class="pieza__marco"><img data-deriva src="assets/img/pez.webp" alt="Pez escultórico en turquesa y fucsia" width="640" height="427" loading="lazy" decoding="async"></div><figcaption class="pieza__ficha"><span>Nº 03</span>Pescado <i>Del mar al ceviche</i></figcaption></figure></li>
-          <li><figure class="pieza" data-revelar="cortina"><div class="pieza__marco"><img data-deriva src="assets/img/pisco.webp" alt="Copa de pisco sour con pie decorado" width="640" height="585" loading="lazy" decoding="async"></div><figcaption class="pieza__ficha"><span>Nº 04</span>Pisco sour <i>Cóctel nacional</i></figcaption></figure></li>
-          <li><figure class="pieza" data-revelar="cortina"><div class="pieza__marco"><img data-deriva src="assets/img/cajon.webp" alt="Cajón peruano naranja con laterales decorados" width="640" height="585" loading="lazy" decoding="async"></div><figcaption class="pieza__ficha"><span>Nº 05</span>Cajón <i>Percusión afroperuana</i></figcaption></figure></li>
-          <li><figure class="pieza" data-revelar="cortina"><div class="pieza__marco"><img data-deriva src="assets/img/vinilo.webp" alt="Vinilo con etiqueta de motivos andinos" width="640" height="585" loading="lazy" decoding="async"></div><figcaption class="pieza__ficha"><span>Nº 06</span>Vinilo <i>Hasta el último baile</i></figcaption></figure></li>
-        </ol>
       </div>
     </section>
 
     <!-- 4 · EL LUGAR Y EL ACCESO -->
     <section id="el-lugar" class="seccion lugar-seccion" aria-labelledby="t-el-lugar">
-      <div class="contenedor rejilla">
-        <h2 id="t-el-lugar" class="etiqueta lugar__etiqueta"><span class="etiqueta__n">III</span>El lugar y el acceso</h2>
-        <p class="lugar__nombre" data-dividir data-revelar="palabras">Yakumanka <em>by Gastón Acurio</em></p>
-        <dl class="lugar" data-revelar="bloque">
-          <div class="lugar__fila"><dt>Acceso</dt><dd>Evento privado. Exclusivamente por invitación.</dd></div>
-          <div class="lugar__fila"><dt>Fecha</dt><dd class="lugar__fecha pendiente" data-campo="fecha">Fecha por confirmar</dd></div>
-          <div class="lugar__fila lugar__fila--direccion"><dt>Dirección</dt><dd class="lugar__direccion" data-campo="direccion" hidden></dd></div>
-        </dl>
-        <div class="lugar__acciones" data-revelar="bloque">
-          <a class="btn btn--principal" data-campo="confirmacion" href="#" hidden><span>Confirmar asistencia</span></a>
-          <a class="enlace" data-campo="mapa" href="#" hidden>Cómo llegar</a>
-          <a class="enlace" data-instagram-boton="yakumanka" href="#" hidden>Yakumanka en Instagram</a>
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="seccion__n" aria-hidden="true">III</span>
+          <h2 id="t-el-lugar" class="seccion__rotulo" data-rotulo data-revelar="rotulo">El lugar</h2>
+        </div>
+        <div class="lugar-rejilla">
+          <p class="lugar__nombre" data-dividir data-revelar="palabras">Yakumanka <em>by Gastón Acurio</em></p>
+          <div>
+            <dl class="lugar" data-revelar="bloque">
+              <div class="lugar__fila"><dt>Acceso</dt><dd>Evento privado. Exclusivamente por invitación.</dd></div>
+              <div class="lugar__fila"><dt>Fecha</dt><dd class="lugar__fecha pendiente" data-campo="fecha">Fecha por confirmar</dd></div>
+              <div class="lugar__fila"><dt>Dirección</dt><dd class="lugar__direccion" data-campo="direccion" hidden></dd></div>
+            </dl>
+            <div class="lugar__acciones" data-revelar="bloque">
+              <a class="btn btn--principal" data-campo="confirmacion" href="#" hidden><span>Confirmar asistencia</span></a>
+              <a class="enlace" data-campo="mapa" href="#" hidden>Cómo llegar</a>
+              <a class="enlace" data-instagram-boton="yakumanka" href="#" hidden>Yakumanka en Instagram</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -231,7 +251,7 @@
     <!-- 5 · PATROCINADORES -->
     <section id="patrocinan" class="seccion patrocinan" aria-labelledby="t-patrocinan">
       <div class="contenedor">
-        <h2 id="t-patrocinan" class="etiqueta"><span class="etiqueta__n">—</span>Patrocinan</h2>
+        <h2 id="t-patrocinan" class="etiqueta">Patrocinan</h2>
         <!-- LOGOTIPOS · cuando lleguen los archivos oficiales, sustituye cada <span> por:
              <img src="assets/patrocinadores/nombre.svg" alt="Nombre del patrocinador" width="200" height="60"> -->
         <ul class="patrocinadores" data-revelar="filas">
@@ -246,9 +266,9 @@
   </main>
 
   <footer class="pie">
-    <!-- Repetición tipográfica, a la manera de los carteles chicha -->
-    <div class="pie__repeticion" aria-hidden="true">
-      <span>Tigre</span><span>Tigre</span><span>Tigre</span><span>Tigre</span><span>Tigre</span><span>Tigre</span><span>Tigre</span><span>Tigre</span>
+    <!-- Repetición, a la manera de los carteles chicha, con la rotulación propia -->
+    <div class="pie__repeticion" aria-hidden="true" data-desliza>
+      <span data-rotulo>Tigre</span><span data-rotulo>Tigre</span><span data-rotulo>Tigre</span><span data-rotulo>Tigre</span><span data-rotulo>Tigre</span><span data-rotulo>Tigre</span>
     </div>
     <div class="contenedor pie__inner">
       <p class="pie__marca">Noche de Tigre</p>
@@ -259,7 +279,8 @@
     </div>
   </footer>
 
+  <script src="assets/rotulo.js?v=2" defer></script>
   <script src="assets/main.js?v=2" defer></script>
-  <script src="assets/movimiento.js?v=1" defer></script>
+  <script src="assets/movimiento.js?v=2" defer></script>
 </body>
 </html>

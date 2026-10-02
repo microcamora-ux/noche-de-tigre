@@ -2,7 +2,7 @@
    1. Divide los textos [data-dividir] en palabras para revelarlas desde una máscara.
    2. Marca la página como lista cuando cargan las fuentes (arranca la entrada de la portada).
    3. Deriva: las piezas se desplazan dentro de su marco al hacer scroll, con inercia.
-   4. Visor: en el programa, la pieza de cada momento sigue al cursor y se inclina con la velocidad.
+   4. Escenario: en el programa, la pieza del momento activo se ilumina en una vitrina fija.
    Solo transform/opacity/clip-path. Sin movimiento con prefers-reduced-motion. */
 (function () {
   'use strict';
@@ -51,50 +51,53 @@
     listo();
   }
 
+  /* 4 · Escenario del programa: el momento que cruza el centro de la pantalla enciende su pieza */
+  var escenario = document.querySelector('.escenario');
+  if (escenario) {
+    var piezas = todos('.escenario__pieza', escenario);
+    var momentos = todos('.momento');
+    var hora = escenario.querySelector('.escenario__hora span');
+    piezas.forEach(function (p) {
+      var img = p.querySelector('img');
+      var brillo = p.querySelector('.brillo');
+      if (img && brillo) {
+        var m = 'url("' + img.src + '")';
+        brillo.style.webkitMaskImage = m;
+        brillo.style.maskImage = m;
+      }
+    });
+    var activar = function (i) {
+      momentos.forEach(function (m) { m.classList.toggle('activo', m.getAttribute('data-i') === String(i)); });
+      piezas.forEach(function (p) { p.classList.toggle('activa', p.getAttribute('data-i') === String(i)); });
+      var actual = momentos[i];
+      if (actual) {
+        escenario.style.setProperty('--halo', actual.style.getPropertyValue('--color'));
+        if (hora) {
+          hora.textContent = actual.querySelector('time').textContent;
+          hora.classList.remove('cambio');
+          void hora.offsetWidth;
+          hora.classList.add('cambio');
+        }
+      }
+    };
+    activar(0);
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) { if (e.isIntersecting) { activar(Number(e.target.getAttribute('data-i'))); } });
+      }, { rootMargin: '-48% 0px -48% 0px', threshold: 0 });
+      momentos.forEach(function (m) { obs.observe(m); });
+    }
+  }
+
   if (reducir) { return; }
 
   var lerp = function (a, b, t) { return a + (b - a) * t; };
 
-  /* 3 · Deriva dentro del marco */
+  /* Deriva dentro del marco */
   var derivas = todos('[data-deriva]').map(function (el) {
     return { el: el, f: el.getAttribute('data-deriva') === 'lento' ? 0.05 : 0.09, y: 0 };
   });
-
   var deslizantes = todos('[data-desliza]').map(function (el) { return { el: el, x: 0 }; });
-
-  /* 4 · Visor del programa */
-  var visor = document.querySelector('.visor');
-  var visorImg = visor && visor.querySelector('img');
-  var lista = document.querySelector('.programa');
-  var punteroFino = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  var v = { x: 0, y: 0, tx: 0, ty: 0, rot: 0, activo: false };
-
-  if (visor && lista && punteroFino) {
-    raiz.classList.add('con-visor');
-    lista.addEventListener('pointermove', function (e) {
-      v.tx = e.clientX;
-      v.ty = e.clientY;
-      if (!v.activo) { v.x = v.tx; v.y = v.ty; }
-      pedir();
-    });
-    todos('.programa__fila', lista).forEach(function (fila) {
-      fila.addEventListener('pointerenter', function () {
-        var src = fila.getAttribute('data-objeto');
-        if (src && visorImg.getAttribute('src') !== src) {
-          visorImg.setAttribute('src', src);
-          visor.classList.remove('cambio');
-          void visor.offsetWidth;
-          visor.classList.add('cambio');
-        }
-        v.activo = true;
-        visor.classList.add('activo');
-      });
-    });
-    lista.addEventListener('pointerleave', function () {
-      v.activo = false;
-      visor.classList.remove('activo');
-    });
-  }
 
   /* Bucle único, solo mientras haya algo que mover */
   var enMarcha = false;
@@ -122,16 +125,6 @@
       if (Math.abs(d.x - objetivo) > 0.1) { seguir = true; }
       d.el.style.transform = 'translate3d(' + d.x.toFixed(2) + 'px,0,0)';
     });
-
-    if (visor && punteroFino) {
-      var px = v.x;
-      v.x = lerp(v.x, v.tx, 0.14);
-      v.y = lerp(v.y, v.ty, 0.14);
-      var vel = v.x - px;
-      v.rot = lerp(v.rot, Math.max(-12, Math.min(12, vel * 0.6)), 0.12);
-      visor.style.transform = 'translate3d(' + v.x.toFixed(1) + 'px,' + v.y.toFixed(1) + 'px,0) translate(-50%,-50%) rotate(' + v.rot.toFixed(2) + 'deg)';
-      if (Math.abs(v.x - v.tx) > 0.3 || Math.abs(v.y - v.ty) > 0.3 || Math.abs(v.rot) > 0.05) { seguir = true; }
-    }
 
     if (seguir) { pedir(); }
   };
