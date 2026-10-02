@@ -402,10 +402,11 @@ a.perfil:hover { color: var(--oro); background-size: 0 1px; background-position:
 
 /* ---------- Pie ---------- */
 .pie { border-top: 1px solid var(--filete); overflow: clip; }
-.pie__repeticion { display: flex; gap: .3em; padding-block: clamp(2rem, 4vw, 3.5rem); font-size: clamp(3.5rem, 10vw, 9rem); white-space: nowrap; will-change: transform; }
+.pie__repeticion { display: flex; gap: .45em; padding-block: clamp(2rem, 4vw, 3.5rem); font-size: clamp(3.5rem, 10vw, 9rem); white-space: nowrap; will-change: transform; }
 .pie__repeticion > span { flex: none; color: var(--oro); }
 .pie__repeticion > span:nth-child(even) .rotulo__svg { fill: none; stroke: color-mix(in srgb, var(--crema) 45%, transparent); stroke-width: 1.2; }
-.pie__inner { display: grid; gap: 1.5rem; padding-block: clamp(2.5rem, 5vw, 4rem) 2.5rem; border-top: 1px solid var(--filete); }
+.pie__repeticion { border-bottom: 1px solid var(--filete); }
+.pie__inner { display: grid; gap: 1.5rem; padding-block: clamp(2.5rem, 5vw, 4rem) 2.5rem; }
 @media (min-width: 48em) { .pie__inner { grid-template-columns: 1fr auto; align-items: end; } }
 .pie__marca { font-size: clamp(1.6rem, 2.6vw, 2.25rem); }
 .pie__datos { display: grid; gap: .2rem; font-size: .6875rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--tinta-suave); }
