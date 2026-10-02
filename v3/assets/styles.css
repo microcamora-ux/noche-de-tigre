@@ -200,36 +200,39 @@ em { font-style: italic; }
 .hero__meta { position: relative; z-index: var(--z-3); display: flex; justify-content: space-between; gap: 1rem; font-size: .6875rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; line-height: 1.8; color: var(--tinta-suave); }
 .hero__meta-der { text-align: right; }
 
-.hero__escenario { position: relative; display: grid; min-height: clamp(26rem, 58vh, 46rem); }
-@media (max-width: 47.99em) { .hero__escenario { min-height: 132vw; } }
+.hero__escenario { position: relative; display: grid; min-height: clamp(26rem, 60vh, 48rem); }
+@media (max-width: 47.99em) { .hero__escenario { min-height: 112vw; align-content: end; } .hero__titulo { align-self: end; } }
 
-/* Bloque compacto: las dos líneas justificadas al mismo ancho, casi pegadas */
+/* Bloque a todo el ancho: NOCHE / DE TIGRE, misma altura de letra en las dos filas */
 .hero__titulo {
   position: relative;
-  align-self: end;
+  z-index: var(--z-1);
+  align-self: center;
   display: flex;
   flex-direction: column;
-  gap: clamp(.45rem, 1vw, .9rem);
-  width: min(100%, clamp(18rem, 43vw, 42rem));
+  gap: clamp(.5rem, 1.4vw, 1.25rem);
+  width: 100%;
   font-weight: 400;
 }
-.hero__titulo .rotulo__svg { width: 100%; height: auto; }
-.hero__l1 { position: relative; z-index: var(--z-3); color: var(--crema); }
-.hero__l2 { position: relative; z-index: var(--z-1); color: var(--oro); }
+.hero__fila { display: flex; align-items: flex-end; }
+.hero__fila > [data-linea] { display: block; min-width: 0; }
+.hero__fila .rotulo__svg { width: 100%; height: auto; }
+.hero__l1, .hero__de { color: var(--crema); }
+.hero__tigre { color: var(--oro); }
 
 .hero__tigres {
   position: absolute;
   z-index: var(--z-2);
-  right: 0;
-  top: 45%;
-  width: min(39vw, 36rem);
-  translate: 0 -50%;
+  right: 1%;
+  top: 0;
+  width: min(33vw, 32rem);
+  translate: 0 -14%;
 }
-@media (max-width: 47.99em) { .hero__tigres { right: auto; left: 50%; top: 38%; width: 84vw; translate: -50% -50%; } }
+@media (max-width: 47.99em) { .hero__tigres { right: -6%; left: auto; top: 0; width: 78vw; translate: 0 0; } }
 .hero__iris img { width: 100%; filter: drop-shadow(0 30px 50px rgba(0, 0, 0, .5)); }
 
 /* Fogonazo: brasas de luz detrás de los tigres */
-.hero__fuego { position: absolute; z-index: 0; right: 0; top: 50%; width: min(52vw, 46rem); aspect-ratio: 1; translate: 6% -50%; pointer-events: none; }
+.hero__fuego { position: absolute; z-index: 0; right: 0; top: 0; width: min(54vw, 50rem); aspect-ratio: 1; translate: 6% -10%; pointer-events: none; }
 @media (max-width: 47.99em) { .hero__fuego { right: auto; left: 50%; width: 110vw; translate: -50% -50%; } }
 .hero__fuego span { position: absolute; border-radius: 50%; filter: blur(60px); mix-blend-mode: screen; }
 .hero__fuego span:nth-child(1) { inset: 20% 16% 16% 20%; background: #FF6A1A; opacity: .55; }
@@ -254,7 +257,7 @@ em { font-style: italic; }
 /* Entrada de la portada */
 @media (prefers-reduced-motion: no-preference) {
   .js .hero__titulo .glifo path { transform: scaleY(0); transition: transform 1.3s var(--expo); transition-delay: calc(var(--g) * 70ms + .2s); }
-  .js .hero__l2 .glifo path { transition-delay: calc(var(--g) * 90ms + .7s); transition-duration: 1.5s; }
+  .js .hero__tigre .glifo path { transition-delay: calc(var(--g) * 90ms + .7s); transition-duration: 1.5s; }
   .js.listo .hero__titulo .glifo path { transform: none; }
 
   .js .hero__iris { clip-path: circle(0% at 50% 55%); transform: scale(1.1); transition: clip-path 2.2s var(--expo) .3s, transform 2.8s var(--salida) .3s; }

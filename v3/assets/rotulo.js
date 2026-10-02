@@ -103,16 +103,17 @@
       x += gl[0] + track;
     });
     var ancho = n(Math.max(x - track, 1));
-    return '<svg class="rotulo__svg" viewBox="0 0 ' + ancho + ' 100" aria-hidden="true" focusable="false">' + cuerpos.join('') + '</svg>';
+    return '<svg class="rotulo__svg" viewBox="0 0 ' + ancho + ' 100" data-ancho="' + ancho + '" aria-hidden="true" focusable="false">' + cuerpos.join('') + '</svg>';
   };
 
   var pintar = function (el, pesoPadre) {
     var texto = el.textContent.replace(/\s+/g, ' ').trim();
     var peso = el.getAttribute('data-peso') || pesoPadre;
+    var dibujo = dibujar(texto + (el.hasAttribute('data-espacio') ? ' ' : ''), peso);
     var oculto = document.createElement('span');
     oculto.className = 'visualmente-oculto';
     oculto.textContent = texto;
-    el.innerHTML = dibujar(texto, peso);
+    el.innerHTML = dibujo;
     el.appendChild(oculto);
   };
 
@@ -125,6 +126,23 @@
       pintar(el, peso);
     }
     el.classList.add('rotulo');
+  });
+
+  /* Bloques [data-bloque]: cada [data-fila] se ajusta para que todas las letras del bloque
+     tengan la misma altura y la fila más larga ocupe el 100 % del ancho. */
+  Array.prototype.slice.call(document.querySelectorAll('[data-bloque]')).forEach(function (bloque) {
+    var filas = Array.prototype.slice.call(bloque.querySelectorAll('[data-fila]'));
+    var sumas = filas.map(function (f) {
+      return Array.prototype.slice.call(f.querySelectorAll('svg[data-ancho]')).reduce(function (t, svg) { return t + Number(svg.getAttribute('data-ancho')); }, 0);
+    });
+    var max = Math.max.apply(null, sumas);
+    filas.forEach(function (f, i) {
+      f.style.width = (sumas[i] / max * 100) + '%';
+      Array.prototype.slice.call(f.querySelectorAll('[data-linea]')).forEach(function (l) {
+        var svg = l.querySelector('svg[data-ancho]');
+        if (svg) { l.style.flex = svg.getAttribute('data-ancho') + ' 1 0'; }
+      });
+    });
   });
 
   window.NOCHE_ROTULO = dibujar;
