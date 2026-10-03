@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@300..700&display=swap">
 
   <link rel="preload" as="image" href="assets/img/tigres.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/styles.css?v=47">
+  <link rel="stylesheet" href="assets/styles.css?v=49">
   <script>document.documentElement.classList.add('js');</script>
 
   <script>
@@ -131,40 +131,42 @@
           <h2 id="t-la-noche" class="seccion__rotulo" data-rotulo data-revelar="rotulo">La noche</h2>
         </div>
         <div class="noche-rejilla">
-          <!-- IMAGEN PROVISIONAL · sustituir por la imagen definitiva de «La noche».
-               Basta con cambiar el src (formato vertical 4:5 recomendado; si es una foto a sangre, quita la clase "noche__imagen--pieza"). -->
-          <figure class="noche__imagen noche__imagen--pieza" data-revelar="cortina">
-            <div class="noche__marco">
-              <span class="noche__brasa" aria-hidden="true"></span>
-              <img data-deriva="lento" src="assets/img/plato.webp" alt="Plato de cerámica esmaltada en turquesa con cenefas escalonadas" width="640" height="494" loading="lazy" decoding="async">
-            </div>
-            <figcaption class="noche__pie-foto"><span>Nº 00</span> La mesa</figcaption>
-          </figure>
-
           <div class="noche__texto">
             <p class="noche__meta">Gastronomía · Conversación · Música</p>
             <p class="noche__frase" data-dividir data-revelar="palabras">Una noche para celebrar el Perú <em>alrededor de la mesa.</em></p>
             <p class="noche__parrafo" data-revelar="bloque">Acme Distribuciones y Yakumanka by Gastón Acurio reúnen gastronomía, conversación y música en un encuentro privado dedicado al producto y la cultura peruana.</p>
-
-            <dl class="ficha" data-revelar="bloque">
-              <div class="ficha__fila">
-                <dt><span>01</span> Gastronomía</dt>
-                <dd>La cocina de Yakumanka trabaja el producto peruano con técnica y memoria: ají amarillo, limón, pescado del día y pisco. Estaciones abiertas para probar, repetir y preguntar.</dd>
-                <img class="ficha__pieza" src="assets/img/aji.webp" alt="" width="640" height="427" loading="lazy" decoding="async">
-              </div>
-              <div class="ficha__fila">
-                <dt><span>02</span> Conversación</dt>
-                <dd>Cocineros, creadores y amigos de la casa hablan del Perú que se come y se cuenta. Sin escenario ni atril: alrededor de la mesa, entre plato y plato.</dd>
-                <img class="ficha__pieza" src="assets/img/pisco.webp" alt="" width="640" height="585" loading="lazy" decoding="async">
-              </div>
-              <div class="ficha__fila">
-                <dt><span>03</span> Música</dt>
-                <dd>Del cajón afroperuano de la bienvenida a la cabina de la madrugada. La noche empieza escuchando, sigue conversando y termina bailando.</dd>
-                <img class="ficha__pieza" src="assets/img/vinilo.webp" alt="" width="640" height="585" loading="lazy" decoding="async">
-              </div>
-            </dl>
+            <p class="noche__parrafo" data-revelar="bloque">La pensamos como una mesa larga: llegar con el sonido del cajón, probar sin prisa, escuchar a quienes cocinan y cuentan el Perú, brindar con pisco y terminar bailando. Una celebración por invitación, con el sabor y el ruido de una fiesta de familia.</p>
           </div>
+
+          <figure class="noche__imagen" data-revelar="cortina">
+            <div class="noche__marco">
+              <span class="noche__brasa" aria-hidden="true"></span>
+              <img data-deriva="lento" src="assets/img/retablo.webp" alt="Retablo ayacuchano abierto con músicos y bailarinas en traje típico, puertas decoradas con flores" width="1200" height="800" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="noche__pie-foto">
+              <span class="noche__pie-titulo"><span>Nº 00</span> Retablo ayacuchano</span>
+              <span class="noche__pie-nota">Nació en los Andes como pequeño altar portátil que acompañaba a arrieros y pastores, y acabó convertido en una caja que cuenta fiestas, mercados y músicos. Así imaginamos esta noche: una caja abierta y llena de gente.</span>
+            </figcaption>
+          </figure>
         </div>
+
+        <dl class="ficha" data-revelar="bloque">
+          <div class="ficha__fila">
+            <dt><span>01</span> Gastronomía</dt>
+            <dd>Choclo, ají amarillo, limón y pescado del día: el producto peruano en manos de la cocina de Yakumanka, con técnica y memoria. Estaciones abiertas para probar, repetir y preguntar por cada receta.</dd>
+            <img class="ficha__pieza" src="assets/img/choclo.webp" alt="" width="1200" height="1200" loading="lazy" decoding="async">
+          </div>
+          <div class="ficha__fila">
+            <dt><span>02</span> Conversación</dt>
+            <dd>Como el aríbalo inca, la vasija que servía la chicha para compartir, la conversación pasa de mano en mano. Cocineros, creadores y amigos de la casa hablan del Perú que se come y se cuenta, sin escenario ni atril.</dd>
+            <img class="ficha__pieza" src="assets/img/aribalo.webp" alt="" width="1097" height="1200" loading="lazy" decoding="async">
+          </div>
+          <div class="ficha__fila">
+            <dt><span>03</span> Música</dt>
+            <dd>Del cajón afroperuano de la bienvenida a la cabina de la madrugada, la música marca cada momento. La zampoña, voz de los Andes, es su emblema: la noche empieza escuchando, sigue conversando y termina bailando.</dd>
+            <img class="ficha__pieza" src="assets/img/zampona.webp" alt="" width="1200" height="1200" loading="lazy" decoding="async">
+          </div>
+        </dl>
       </div>
     </section>
 
@@ -175,6 +177,7 @@
           <span class="seccion__n" aria-hidden="true">II</span>
           <h2 id="t-programa" class="seccion__rotulo" data-rotulo data-revelar="rotulo">Programa</h2>
         </div>
+        <p class="seccion__intro" data-revelar="bloque">Seis momentos para recorrer la noche de principio a fin. Cada uno tiene su pieza, su sonido y su sabor: el programa está pensado para vivirse entero, sin prisa y en buena compañía.</p>
 
         <div class="programa">
           <div class="escenario" aria-hidden="true">
@@ -196,41 +199,41 @@
               <img class="momento__pieza" src="assets/img/cajon.webp" alt="" loading="lazy" decoding="async">
               <time class="momento__hora" datetime="20:00">20:00</time>
               <h3 class="momento__nombre">Bienvenida Afroperuana</h3>
-              <p class="momento__texto">La noche arranca al ritmo del cajón. Percusión afroperuana para cruzar la puerta, dejar la ciudad atrás y entrar en el Perú.</p>
+              <p class="momento__texto">La noche arranca al ritmo del cajón, el instrumento nacido en la costa afroperuana que hoy es Patrimonio Cultural de la Nación. Percusión en directo para cruzar la puerta, dejar la ciudad atrás y entrar en el Perú.</p>
               <p class="momento__quien"><span class="perfil" data-instagram="mario-cubillas">Mario Cubillas</span></p>
             </li>
             <li class="momento" data-i="1" style="--color:#C6D84A">
               <img class="momento__pieza" src="assets/img/limon.webp" alt="" loading="lazy" decoding="async">
               <time class="momento__hora" datetime="20:30">20:30</time>
               <h3 class="momento__nombre">Habla causa</h3>
-              <p class="momento__texto">«Habla, causa»: así se saludan los amigos en Lima. Una conversación sin guion sobre lo que el Perú ha puesto en la mesa del mundo.</p>
+              <p class="momento__texto">«Habla, causa»: así se saludan los amigos en Lima. Una conversación sin guion sobre producto, identidad y todo lo que el Perú ha puesto en la mesa del mundo, con la cercanía de una charla de sobremesa.</p>
               <p class="momento__quien"><span class="perfil" data-instagram="rocio-quillahuaman">Rocío Quillahuaman</span> <span class="momento__con">con</span> <span class="perfil" data-instagram="albert-adria">Albert Adrià</span></p>
             </li>
             <li class="momento" data-i="2" style="--color:#12C3C9">
               <img class="momento__pieza" src="assets/img/pez.webp" alt="" loading="lazy" decoding="async">
               <time class="momento__hora" datetime="21:00">21:00</time>
               <h3 class="momento__nombre">Premio Mejor Ceviche 2027</h3>
-              <p class="momento__texto">Pescado del día, limón y ají. Presentamos el premio que saldrá a buscar el mejor ceviche de 2027.</p>
+              <p class="momento__texto">El ceviche es el plato bandera del Perú: pescado del día, limón, ají y cebolla, sin nada que sobre. Esta noche presentamos el premio que saldrá a buscar el mejor ceviche de 2027.</p>
             </li>
             <li class="momento" data-i="3" style="--color:#E8B04A">
               <img class="momento__pieza" src="assets/img/pisco.webp" alt="" loading="lazy" decoding="async">
               <time class="momento__hora" datetime="21:15">21:15</time>
               <h3 class="momento__nombre">Cóctel</h3>
-              <p class="momento__texto">La cocina sale de la cocina. Estaciones de Yakumanka repartidas por la sala, productos Acme y pisco para brindar.</p>
+              <p class="momento__texto">La cocina sale de la cocina. Estaciones de Yakumanka repartidas por la sala, productos Acme y pisco para brindar: un recorrido para probar, picar y volver a por más mientras sigue la conversación.</p>
               <p class="momento__quien">Productos Acme y estaciones elaboradas por el restaurante</p>
             </li>
             <li class="momento" data-i="4" style="--color:#FF2A93">
               <img class="momento__pieza" src="assets/img/vinilo.webp" alt="" loading="lazy" decoding="async">
               <time class="momento__hora" datetime="22:15">22:15</time>
               <h3 class="momento__nombre">No más chamba</h3>
-              <p class="momento__texto">Se acabó el trabajo por hoy. Dos selectores se turnan los platos, B2B, hasta que nadie se acuerde de mirar el reloj.</p>
+              <p class="momento__texto">Se acabó el trabajo por hoy. Dos selectores se turnan los platos, B2B, con música para soltar la semana y llenar la pista hasta que nadie se acuerde de mirar el reloj.</p>
               <p class="momento__quien"><span class="perfil" data-instagram="pierre-antoine">Pierre Antoine</span> <span class="momento__con">B2B</span> DJ <span class="perfil" data-instagram="miqui-puig">Miqui Puig</span></p>
             </li>
             <li class="momento" data-i="5" style="--color:#E2432A">
               <img class="momento__pieza" src="assets/img/aji.webp" alt="" loading="lazy" decoding="async">
               <time class="momento__hora" datetime="23:00">23:00</time>
               <h3 class="momento__nombre">Se armó el tono</h3>
-              <p class="momento__texto">En el Perú, cuando «se arma el tono», empieza la fiesta de verdad. El último tramo de la noche, en la pista.</p>
+              <p class="momento__texto">En el Perú, cuando «se arma el tono», empieza la fiesta de verdad. Como el ají, la noche sube de temperatura al final: el último tramo es para bailar.</p>
               <p class="momento__quien"><span class="perfil" data-instagram="jordi-stone">Jordi Stone</span></p>
             </li>
           </ol>
@@ -246,18 +249,47 @@
           <h2 id="t-el-lugar" class="seccion__rotulo" data-rotulo data-revelar="rotulo">El lugar</h2>
         </div>
         <div class="lugar-rejilla">
-          <p class="lugar__nombre" data-dividir data-revelar="palabras">Yakumanka <em>by Gastón Acurio</em></p>
+          <div class="lugar__texto">
+            <p class="lugar__nombre" data-dividir data-revelar="palabras">Yakumanka <em>by Gastón Acurio</em></p>
+            <p class="lugar__parrafo" data-revelar="bloque">Yakumanka —«olla de agua» en quechua— es la casa de Gastón Acurio en Barcelona dedicada a la cocina marinera peruana: cebiches, tiraditos y sabores de la costa con el espíritu de una picantería de barrio. Esa noche, la sala se convierte en una gran mesa compartida.</p>
+          </div>
           <div>
             <dl class="lugar" data-revelar="bloque">
+              <div class="lugar__fila"><dt>Lugar</dt><dd>Yakumanka by Gastón Acurio, Barcelona.</dd></div>
               <div class="lugar__fila"><dt>Acceso</dt><dd>Evento privado. Exclusivamente por invitación.</dd></div>
               <div class="lugar__fila"><dt>Fecha</dt><dd class="lugar__fecha pendiente" data-campo="fecha">Fecha por confirmar</dd></div>
               <div class="lugar__fila"><dt>Dirección</dt><dd class="lugar__direccion" data-campo="direccion" hidden></dd></div>
+              <div class="lugar__fila"><dt>Horario</dt><dd>Desde las 20:00, con la bienvenida afroperuana.</dd></div>
             </dl>
             <div class="lugar__acciones" data-revelar="bloque">
               <a class="btn btn--principal" data-campo="confirmacion" href="#" hidden><span>Confirmar asistencia</span></a>
               <a class="enlace" data-campo="mapa" href="#" hidden>Cómo llegar</a>
               <a class="enlace" data-instagram-boton="yakumanka" href="#" hidden>Yakumanka en Instagram</a>
             </div>
+            <figure class="lugar__torito" data-revelar="bloque">
+              <img src="assets/img/torito.webp" alt="Torito de Pucará de cerámica esmaltada en turquesa con flores y cuernos dorados" width="1200" height="1097" loading="lazy" decoding="async">
+              <figcaption>En los tejados del sur andino, una pareja de toritos de Pucará protege la casa y llama a la prosperidad. El nuestro guarda la puerta de la noche.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIERRE · el tumi despide la invitación -->
+    <section class="seccion cierre" aria-labelledby="t-cierre">
+      <div class="contenedor cierre__inner">
+        <figure class="cierre__pieza" data-revelar="bloque">
+          <span class="cierre__halo" aria-hidden="true"></span>
+          <img src="assets/img/tumi.webp" alt="Tumi ceremonial dorado con incrustaciones turquesa y cenefas escalonadas" width="995" height="1200" loading="lazy" decoding="async">
+        </figure>
+        <div class="cierre__texto">
+          <p class="noche__meta">Hasta la noche</p>
+          <h2 id="t-cierre" class="cierre__titulo" data-dividir data-revelar="palabras">Te esperamos <em>alrededor de la mesa.</em></h2>
+          <p class="cierre__parrafo" data-revelar="bloque">Una noche para conocer el Perú por la boca y por el oído: producto, conversación y música en la casa de Gastón Acurio en Barcelona. El acceso es solo por invitación; la fecha y los detalles se confirmarán en esta misma página.</p>
+          <p class="cierre__nota" data-revelar="bloque">El tumi, cuchillo ceremonial de la cultura Lambayeque, es hoy un símbolo peruano de buena fortuna. Lo dejamos aquí, al final, como despedida y como augurio.</p>
+          <div class="cierre__acciones" data-revelar="bloque">
+            <a class="btn btn--principal" data-campo="confirmacion" href="#" hidden><span>Confirmar asistencia</span></a>
+            <a class="enlace" href="#programa">Ver programa</a>
           </div>
         </div>
       </div>
@@ -267,6 +299,7 @@
     <section id="patrocinan" class="seccion patrocinan" aria-labelledby="t-patrocinan">
       <div class="contenedor">
         <h2 id="t-patrocinan" class="etiqueta">Patrocinan</h2>
+        <p class="patrocinan__intro">Gracias a quienes hacen posible la noche.</p>
         <!-- LOGOTIPOS · cuando lleguen los archivos oficiales, sustituye cada <span> por:
              <img src="assets/patrocinadores/nombre.svg" alt="Nombre del patrocinador" width="200" height="60"> -->
         <ul class="patrocinadores" data-revelar="filas">
