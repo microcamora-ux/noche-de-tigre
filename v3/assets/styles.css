@@ -379,6 +379,7 @@ em { font-style: italic; }
   transition: opacity 1s var(--salida), transform 1.5s var(--expo), filter 1.1s var(--salida);
 }
 .escenario__pieza.activa { opacity: 1; transform: none; filter: none; }
+.escenario__pieza[data-i="2"] { inset: 8%; }
 .escenario__pieza img {
   width: 100%;
   height: 100%;
